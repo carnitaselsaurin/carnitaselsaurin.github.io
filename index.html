@@ -1,0 +1,1372 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Tarjeta El Saurín</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Tarjeta de cliente frecuente de Carnitas Michoacanas El Saurín: junta sellos con tus compras de carne y gana premios.">
+<meta name="theme-color" content="#24160e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Courier+Prime:wght@400;700&family=Libre+Franklin:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: una sola columna del ancho de un celular. La tarjeta de cartulina con cuerda trenzada
+   es la protagonista; todo lo demás (premios, reseña, caja) vive debajo, sobre fondo café tostado.
+   Diseño de un solo tema (oscuro) a propósito: los colores del Saurín no cambian con el sistema. */
+:root {
+  --fondo: #24160e;
+  --fondo-2: #2f1d12;
+  --fondo-3: #3f2819;
+  --linea: rgba(244, 231, 207, 0.16);
+  --crema: #f4e7cf;
+  --crema-2: #e8d4b0;
+  --papel: #fffaf1;
+  --tinta: #3b2416;
+  --tinta-2: #6f5340;
+  --guinda: #8c1c2e;
+  --guinda-2: #a52a3d;
+  --guinda-osc: #66121f;
+  --oro: #c99a3e;
+  --oro-claro: #e6c47a;
+  --oro-osc: #8f6420;
+  --texto: #f4e7cf;
+  --texto-2: #cdb898;
+  --ok: #2f6f45;
+  --ok-fondo: #dfeedb;
+  --mal: #9f2419;
+  --mal-fondo: #f7ddd6;
+  --f-display: "Alfa Slab One", Rockwell, "Roboto Slab", Georgia, serif;
+  --f-texto: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "Courier Prime", "Courier New", Courier, monospace;
+  color-scheme: dark;
+}
+
+html, body { min-height: 100%; }
+body {
+  background-color: var(--fondo);
+  background-image: radial-gradient(120% 55% at 50% -12%, rgba(201, 154, 62, 0.2), transparent 62%);
+  color: var(--texto);
+  font: 400 16px/1.5 var(--f-texto);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 40px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+.app { max-width: 460px; margin: 0 auto; padding-top: 14px; display: flex; flex-direction: column; gap: 28px; }
+.vista { display: flex; flex-direction: column; gap: 28px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; font-weight: 400; }
+p { margin: 0; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- Encabezado ---------- */
+.marca { display: flex; align-items: center; gap: 12px; }
+.marca-insignia { width: 46px; height: 46px; flex: none; border-radius: 50%; background: var(--guinda); color: var(--crema); display: grid; place-items: center; box-shadow: 0 0 0 2px var(--fondo), 0 0 0 3.5px var(--oro); }
+.marca-insignia svg { width: 36px; height: 36px; }
+.marca-txt { display: flex; flex-direction: column; min-width: 0; }
+.marca-sup { font: 600 11px/1.2 var(--f-texto); letter-spacing: 0.16em; text-transform: uppercase; color: var(--oro-claro); }
+.marca-nombre { font: 24px/1.1 var(--f-display); color: var(--crema); letter-spacing: 0.01em; }
+.marca-desde { margin-left: auto; text-align: right; font: 700 11px/1.25 var(--f-mono); color: var(--texto-2); letter-spacing: 0.06em; text-transform: uppercase; }
+
+.aviso-prueba { background: var(--fondo-3); border: 1px dashed var(--oro); border-radius: 14px; padding: 12px 14px; font-size: 14px; color: var(--texto-2); }
+.aviso-prueba b { color: var(--oro-claro); font-weight: 600; }
+.aviso-guardado { background: var(--mal-fondo); color: var(--mal); border-radius: 14px; padding: 12px 14px; font-size: 14px; font-weight: 500; }
+
+/* ---------- Tarjeta de cartulina ---------- */
+.cuerda {
+  padding: 7px;
+  border-radius: 26px;
+  background: repeating-linear-gradient(-52deg, var(--oro-osc) 0 3px, var(--oro) 3px 8px, var(--oro-claro) 8px 10px, var(--oro) 10px 13px);
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.45), inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+.carton {
+  position: relative;
+  border-radius: 20px;
+  background-color: var(--crema);
+  background-image: radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.6), transparent 46%), radial-gradient(rgba(59, 36, 22, 0.07) 0.8px, transparent 1.1px);
+  background-size: auto, 5px 5px;
+  color: var(--tinta);
+  padding: 20px 18px 18px;
+  box-shadow: inset 0 0 0 5px var(--crema), inset 0 0 0 6.5px rgba(140, 28, 46, 0.45);
+  display: flex; flex-direction: column; gap: 14px;
+  color-scheme: light;
+}
+.carton.golpe { animation: golpe 0.35s ease; }
+.carton-cab { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.carton-eyebrow { font: 700 11px/1.2 var(--f-texto); letter-spacing: 0.16em; text-transform: uppercase; color: var(--tinta-2); }
+.carton-folio { font: 400 12px/1 var(--f-mono); color: var(--tinta-2); white-space: nowrap; }
+.carton-folio b { font-weight: 700; color: var(--guinda); letter-spacing: 0.06em; }
+.carton-nombre { font: clamp(38px, 11vw, 48px)/0.95 var(--f-display); color: var(--guinda); text-align: center; letter-spacing: 0.01em; margin-top: 2px; }
+.liston { display: flex; justify-content: center; margin-top: -4px; }
+.liston span { background: var(--guinda); color: var(--crema); font: 700 11px/1 var(--f-texto); letter-spacing: 0.14em; text-transform: uppercase; padding: 7px 20px; clip-path: polygon(0 0, 100% 0, calc(100% - 9px) 50%, 100% 100%, 0 100%, 9px 50%); }
+
+.sellos { list-style: none; margin: 4px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.sello { aspect-ratio: 1; max-width: 100%; border-radius: 50%; display: grid; place-items: center; position: relative; border: 2px dashed rgba(59, 36, 22, 0.32); }
+.sello .num { font: 700 15px/1 var(--f-mono); color: rgba(59, 36, 22, 0.4); }
+.sello.meta { border-style: solid; border-color: rgba(140, 28, 46, 0.55); background: rgba(140, 28, 46, 0.06); }
+.sello .meta-txt { font: 700 9px/1.1 var(--f-texto); letter-spacing: 0.08em; text-transform: uppercase; color: var(--guinda); text-align: center; }
+.sello.lleno { border-color: transparent; }
+.sello svg { width: 112%; height: 112%; color: var(--guinda); transform: rotate(var(--r, 0deg)); opacity: 0.92; }
+.sello.nuevo svg { animation: estampar 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.25) both; animation-delay: var(--d, 0ms); }
+
+.carton-pie { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-top: 1.5px dashed rgba(59, 36, 22, 0.25); padding-top: 12px; }
+.cuenta { display: flex; align-items: baseline; gap: 4px; }
+.cuenta b { font: 34px/1 var(--f-display); color: var(--guinda); font-weight: 400; font-variant-numeric: tabular-nums; }
+.cuenta span { font: 600 14px/1 var(--f-texto); color: var(--tinta-2); }
+.faltan { font-size: 14px; color: var(--tinta); font-weight: 500; text-align: right; flex: 1 1 160px; }
+.premio-linea { display: flex; gap: 10px; align-items: center; background: rgba(140, 28, 46, 0.08); border-radius: 12px; padding: 10px 12px; font-size: 14px; }
+.premio-linea svg { width: 26px; height: 26px; flex: none; color: var(--guinda); }
+.premio-linea b { color: var(--guinda); }
+
+/* ---------- Avisos sobre la tarjeta ---------- */
+.franja { display: flex; align-items: center; gap: 12px; background: var(--guinda); color: var(--crema); border-radius: 16px; padding: 12px 12px 12px 16px; box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3); }
+.franja p { flex: 1; font-weight: 600; font-size: 15px; min-width: 0; }
+.gracias { background: var(--fondo-3); border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 10px; border: 1px solid var(--linea); }
+.gracias h2 { font: 20px/1.15 var(--f-display); color: var(--crema); }
+.gracias p { color: var(--texto-2); font-size: 15px; }
+.gracias .fila { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+/* ---------- Secciones ---------- */
+.seccion { display: flex; flex-direction: column; gap: 14px; }
+.seccion-titulo { font: 22px/1.15 var(--f-display); color: var(--crema); }
+.seccion-sub { color: var(--texto-2); font-size: 15px; margin-top: -6px; }
+
+.boletos { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.boleto {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--crema); color: var(--tinta);
+  border-radius: 14px; padding: 14px 14px 14px 22px; position: relative;
+  -webkit-mask: radial-gradient(circle at 0 50%, transparent 9px, #000 9.5px);
+  mask: radial-gradient(circle at 0 50%, transparent 9px, #000 9.5px);
+}
+.boleto::before { content: ""; position: absolute; left: 14px; top: 10px; bottom: 10px; border-left: 2px dotted rgba(59, 36, 22, 0.3); }
+.boleto-txt { flex: 1; min-width: 0; padding-left: 6px; }
+.boleto-txt b { display: block; font: 18px/1.15 var(--f-display); color: var(--guinda); font-weight: 400; }
+.boleto-txt span { font-size: 13px; color: var(--tinta-2); }
+.entregados { font-size: 14px; color: var(--texto-2); }
+.entregados summary { cursor: pointer; padding: 6px 0; }
+.entregados ul { margin: 6px 0 0; padding-left: 18px; }
+
+.pasos { list-style: none; counter-reset: paso; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.pasos li { counter-increment: paso; display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px; align-items: start; }
+.pasos li::before { content: counter(paso); width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font: 18px/1 var(--f-display); color: var(--crema); background: var(--guinda); box-shadow: inset 0 0 0 2px var(--guinda), inset 0 0 0 3.5px var(--crema); }
+.pasos b { color: var(--crema); font-weight: 600; display: block; }
+.pasos span { color: var(--texto-2); font-size: 15px; }
+
+.visita { background: var(--fondo-2); border: 1px solid var(--linea); border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+.visita-datos { display: grid; gap: 6px; font-size: 14px; color: var(--texto-2); }
+.visita-datos b { color: var(--crema); font-weight: 600; }
+.botones { display: flex; flex-wrap: wrap; gap: 10px; }
+.botones > * { flex: 1 1 160px; }
+
+.letra-chica { font-size: 13px; color: var(--texto-2); display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--linea); padding-top: 18px; }
+.letra-chica h2 { font: 700 12px/1.2 var(--f-texto); letter-spacing: 0.14em; text-transform: uppercase; color: var(--oro-claro); }
+.pie-acciones { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+
+/* ---------- Botones ---------- */
+.btn {
+  appearance: none; border: 0; border-radius: 12px; min-height: 48px; padding: 12px 18px;
+  font: 600 16px/1.2 var(--f-texto); cursor: pointer; text-decoration: none; text-align: center;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  transition: transform 0.12s ease, filter 0.12s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn-primario { background: var(--guinda); color: var(--crema); box-shadow: 0 3px 0 var(--guinda-osc); }
+.btn-primario:hover:not(:disabled) { filter: brightness(1.08); }
+.btn-claro { background: var(--crema); color: var(--tinta); box-shadow: 0 3px 0 var(--crema-2); }
+.btn-borde { background: transparent; color: var(--crema); box-shadow: inset 0 0 0 1.5px rgba(244, 231, 207, 0.4); }
+.btn-tinta { background: transparent; color: var(--tinta); box-shadow: inset 0 0 0 1.5px rgba(59, 36, 22, 0.45); }
+.btn-chico { min-height: 40px; padding: 8px 14px; font-size: 14px; }
+.btn-texto { appearance: none; background: none; border: 0; padding: 6px 0; font: 600 14px/1.3 var(--f-texto); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; color: inherit; }
+.btn:focus-visible, .btn-texto:focus-visible, .tabs button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--oro-claro); outline-offset: 2px;
+}
+
+/* ---------- Caja ---------- */
+.caja-cab { display: flex; flex-direction: column; gap: 6px; }
+.caja-cab h1 { font: 30px/1.05 var(--f-display); color: var(--crema); }
+.caja-cab p { color: var(--texto-2); font-size: 15px; }
+.panel { background: var(--crema); color: var(--tinta); border-radius: 18px; padding: 20px; display: flex; flex-direction: column; gap: 14px; color-scheme: light; }
+.panel h2 { font: 21px/1.15 var(--f-display); color: var(--tinta); }
+.panel label { font-weight: 600; font-size: 14px; margin-bottom: -8px; }
+.panel input[type="password"], .panel input[type="text"], .panel textarea {
+  font: 500 18px/1.3 var(--f-texto); padding: 12px 14px; border-radius: 10px;
+  border: 1.5px solid rgba(59, 36, 22, 0.35); background: var(--papel); color: var(--tinta); width: 100%; box-sizing: border-box;
+}
+.panel textarea { font: 400 15px/1.4 var(--f-mono); resize: vertical; }
+.nota { font-size: 13px; color: var(--tinta-2); }
+.error { color: var(--mal); background: var(--mal-fondo); border-radius: 10px; padding: 10px 12px; font-size: 14px; font-weight: 600; }
+
+.tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; background: var(--fondo-2); border: 1px solid var(--linea); border-radius: 14px; padding: 4px; }
+.tabs button { appearance: none; border: 0; background: none; border-radius: 10px; min-height: 42px; font: 600 14px/1.1 var(--f-texto); color: var(--texto-2); cursor: pointer; padding: 6px 4px; }
+.tabs button[aria-selected="true"] { background: var(--crema); color: var(--tinta); }
+
+.monto { display: flex; align-items: center; gap: 6px; border: 2px solid var(--tinta); border-radius: 14px; padding: 2px 14px; background: var(--papel); }
+.monto span { font: 32px/1 var(--f-display); color: var(--tinta-2); }
+.panel .monto input { flex: 1; min-width: 0; width: auto; border: 0; border-radius: 0; outline: none; background: transparent; color: var(--tinta); font: 42px/1.15 var(--f-display); padding: 8px 0; font-variant-numeric: tabular-nums; }
+.monto:focus-within { box-shadow: 0 0 0 3px var(--oro-claro); }
+.atajos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.atajos button { appearance: none; border: 1.5px solid rgba(59, 36, 22, 0.3); background: var(--papel); color: var(--tinta); border-radius: 999px; min-height: 40px; padding: 6px 4px; white-space: nowrap; font: 600 14px/1 var(--f-texto); cursor: pointer; font-variant-numeric: tabular-nums; }
+.calc { display: flex; align-items: center; gap: 14px; background: rgba(140, 28, 46, 0.08); border-radius: 14px; padding: 12px 14px; }
+.calc-num { font: 44px/1 var(--f-display); color: var(--guinda); font-variant-numeric: tabular-nums; min-width: 1.2em; text-align: center; }
+.calc-txt { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.calc-txt b { font-weight: 700; }
+.calc-txt span { font-size: 14px; color: var(--tinta-2); }
+
+.qr-marco { background: #fff; border-radius: 14px; padding: 10px; box-shadow: inset 0 0 0 2px var(--crema-2); width: min(100%, 300px); align-self: center; }
+.qr-marco svg { display: block; width: 100%; height: auto; }
+.codigo-txt { font: 700 15px/1.3 var(--f-mono); letter-spacing: 0.04em; color: var(--tinta); text-align: center; word-break: break-all; }
+.venta-titulo { display: flex; align-items: baseline; justify-content: center; gap: 10px; flex-wrap: wrap; text-align: center; }
+.venta-titulo b { font: 34px/1 var(--f-display); color: var(--guinda); font-weight: 400; }
+.venta-titulo span { color: var(--tinta-2); font-weight: 600; }
+
+.pasos-caja { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; }
+.panel details summary { cursor: pointer; font-weight: 600; font-size: 15px; padding: 4px 0; }
+.panel details[open] summary { margin-bottom: 12px; }
+.panel details > div { display: flex; flex-direction: column; gap: 14px; }
+
+.cifras { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.cifra { background: var(--papel); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 4px; box-shadow: inset 0 0 0 1px rgba(59, 36, 22, 0.12); }
+.cifra b { font: 28px/1 var(--f-display); color: var(--guinda); font-weight: 400; font-variant-numeric: tabular-nums; }
+.cifra span { font-size: 13px; color: var(--tinta-2); font-weight: 500; }
+.tabla-env { overflow-x: auto; }
+.tabla { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+.tabla th, .tabla td { padding: 8px 6px; text-align: right; border-bottom: 1px solid rgba(59, 36, 22, 0.12); white-space: nowrap; }
+.tabla th:first-child, .tabla td:first-child { text-align: left; }
+.tabla th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--tinta-2); font-weight: 700; }
+.huella { font: 700 30px/1 var(--f-mono); letter-spacing: 0.18em; color: var(--guinda); }
+.reglas { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 15px; }
+.reglas b { font-weight: 700; }
+
+/* ---------- Canje ---------- */
+.veredicto { border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 4px; }
+.veredicto b { font: 24px/1.1 var(--f-display); font-weight: 400; }
+.veredicto.si { background: var(--ok-fondo); color: var(--ok); }
+.veredicto.no { background: var(--mal-fondo); color: var(--mal); }
+.veredicto span { font-weight: 600; color: var(--tinta); }
+.canje-lista { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.canje-lista li { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 10px; align-items: center; background: var(--papel); border-radius: 10px; padding: 10px 12px; font-size: 14px; }
+.canje-lista .marca-ok, .canje-lista .marca-no { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; color: #fff; }
+.canje-lista .marca-ok { background: var(--ok); }
+.canje-lista .marca-no { background: var(--mal); }
+.canje-lista code { font: 700 13px/1.2 var(--f-mono); word-break: break-all; }
+.canje-lista small { display: block; color: var(--tinta-2); font-size: 12px; }
+.canje-lista .k { font: 18px/1 var(--f-display); color: var(--guinda); }
+.entregado-ok { background: var(--ok); color: #fff; border-radius: 14px; padding: 16px; text-align: center; font-weight: 700; font-size: 17px; }
+
+/* ---------- Diálogos ---------- */
+dialog.dlg {
+  box-sizing: border-box;
+  width: min(420px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow: auto;
+  border: 0; border-radius: 22px; padding: 22px 20px 20px; background: var(--crema); color: var(--tinta);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55); color-scheme: light;
+}
+dialog.dlg::backdrop { background: rgba(20, 11, 6, 0.78); }
+dialog.dlg[open] { display: flex; flex-direction: column; gap: 14px; animation: subir 0.28s ease both; }
+.dlg-eyebrow { font: 700 11px/1.2 var(--f-texto); letter-spacing: 0.16em; text-transform: uppercase; color: var(--tinta-2); }
+.dlg-titulo { font: 24px/1.1 var(--f-display); color: var(--tinta); }
+.dlg-titulo:focus { outline: none; }
+.dlg-acciones { display: flex; flex-wrap: wrap; gap: 10px; }
+.dlg-acciones > * { flex: 1 1 140px; }
+
+.raspa-area { position: relative; border-radius: 16px; overflow: hidden; height: 190px; background: var(--papel); box-shadow: inset 0 0 0 2px var(--crema-2); }
+.raspa-premio { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center; padding: 12px; }
+.raspa-num { font: 64px/0.9 var(--f-display); color: var(--guinda); }
+.raspa-premio > span:nth-child(2) { font-weight: 700; font-size: 16px; }
+.raspa-mini { display: flex; gap: 4px; justify-content: center; flex-wrap: wrap; margin-top: 6px; }
+.raspa-mini svg { width: 26px; height: 26px; color: var(--guinda); }
+.raspa-lienzo { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; cursor: grab; transition: opacity 0.45s ease; }
+.raspa-lienzo.fuera { opacity: 0; pointer-events: none; }
+
+.gano { align-items: center; text-align: center; }
+.gano-sello { font: 30px/1 var(--f-display); color: var(--guinda); border: 4px double var(--guinda); border-radius: 12px; padding: 10px 18px; transform: rotate(-8deg); letter-spacing: 0.04em; animation: estampar-grande 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.3) both; margin: 6px 0 4px; }
+.gano-premio { font: 22px/1.15 var(--f-display); color: var(--guinda); }
+
+.toast { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 20px); background: var(--crema); color: var(--tinta); font-weight: 600; font-size: 15px; padding: 12px 18px; border-radius: 12px; box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45); opacity: 0; pointer-events: none; transition: opacity 0.25s ease, transform 0.25s ease; max-width: calc(100vw - 32px); width: max-content; z-index: 20; }
+.toast.ver { opacity: 1; transform: translate(-50%, 0); }
+
+@keyframes estampar { 0% { transform: rotate(calc(var(--r, 0deg) + 25deg)) scale(1.9); opacity: 0; } 60% { opacity: 0.95; } 100% { transform: rotate(var(--r, 0deg)) scale(1); opacity: 0.92; } }
+@keyframes estampar-grande { 0% { transform: rotate(-30deg) scale(2.2); opacity: 0; } 100% { transform: rotate(-8deg) scale(1); opacity: 1; } }
+@keyframes golpe { 0%, 100% { transform: translateY(0); } 30% { transform: translateY(3px); } 60% { transform: translateY(-1px); } }
+@keyframes subir { from { transform: translateY(14px); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-delay: 0ms !important; transition-duration: 0.001ms !important; }
+}
+@media (min-width: 700px) { .app { padding-top: 32px; } }
+</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%238c1c2e'/%3E%3Cpath fill='%23f4e7cf' d='M18.6 26.2 16.8 13.6 28 20.4Z M45.4 26.2 47.2 13.6 36 20.4Z'/%3E%3Cpath fill='%23f4e7cf' fill-rule='evenodd' d='M16 34a16 16 0 1 0 32 0a16 16 0 1 0-32 0Z M24.6 38.6a7.4 5.1 0 1 0 14.8 0a7.4 5.1 0 1 0-14.8 0Z M24.3 29.4a1.9 1.9 0 1 0 3.8 0a1.9 1.9 0 1 0-3.8 0Z M35.9 29.4a1.9 1.9 0 1 0 3.8 0a1.9 1.9 0 1 0-3.8 0Z'/%3E%3C/svg%3E">
+<meta property="og:title" content="Tarjeta El Saurín">
+<meta property="og:description" content="Junta sellos con tus compras de carne y gana carnitas gratis en Carnitas Michoacanas El Saurín.">
+<meta property="og:locale" content="es_MX">
+<meta property="og:url" content="https://carnitaselsaurin.github.io/">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="tinta" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="11" result="ruido"/>
+      <feDisplacementMap in="SourceGraphic" in2="ruido" scale="1.8"/>
+    </filter>
+    <symbol id="cerdo" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="29.5" fill="none" stroke="currentColor" stroke-width="3"/>
+      <circle cx="32" cy="32" r="25" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2.2 2.4"/>
+      <path fill="currentColor" d="M18.6 26.2 16.8 13.6 28 20.4Z M45.4 26.2 47.2 13.6 36 20.4Z"/>
+      <path fill="currentColor" fill-rule="evenodd" d="M16 34a16 16 0 1 0 32 0a16 16 0 1 0-32 0Z M24.6 38.6a7.4 5.1 0 1 0 14.8 0a7.4 5.1 0 1 0-14.8 0Z M24.3 29.4a1.9 1.9 0 1 0 3.8 0a1.9 1.9 0 1 0-3.8 0Z M35.9 29.4a1.9 1.9 0 1 0 3.8 0a1.9 1.9 0 1 0-3.8 0Z M26.6 45.6q5.4 3.9 10.8 0q-5.4 2-10.8 0Z"/>
+      <ellipse cx="29.5" cy="38.6" rx="1.45" ry="2.2" fill="currentColor"/>
+      <ellipse cx="34.5" cy="38.6" rx="1.45" ry="2.2" fill="currentColor"/>
+    </symbol>
+    <symbol id="regalo" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M3.5 9.5h17v4h-17z M5 13.5h14V21H5z M12 9.5V21 M12 9.5c-1.6-3.6-6.2-4.4-6.2-1.6 0 1.2 1.3 1.6 6.2 1.6Zm0 0c1.6-3.6 6.2-4.4 6.2-1.6 0 1.2-1.3 1.6-6.2 1.6Z"/>
+    </symbol>
+    <symbol id="estrella" viewBox="0 0 24 24">
+      <path fill="currentColor" d="m12 2.8 2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 16.6l-5.4 2.9 1.1-6.1-4.5-4.2 6.1-.8Z"/>
+    </symbol>
+    <symbol id="pin" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.8" d="M12 21s-6.5-6.1-6.5-11a6.5 6.5 0 0 1 13 0c0 4.9-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.8"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="app">
+  <header class="marca">
+    <span class="marca-insignia" aria-hidden="true"><svg><use href="#cerdo"/></svg></span>
+    <span class="marca-txt"><span class="marca-sup">Carnitas Michoacanas</span><span class="marca-nombre">El Saurín</span></span>
+    <span class="marca-desde">Desde 1986<br>Tuxtepec</span>
+  </header>
+
+  <p class="aviso-prueba" id="aviso-prueba" hidden><b>Vista de prueba.</b> Así la verán tus clientes cuando quede publicada. Para probar la caja entra en «Acceso para el personal», al final de la página.</p>
+  <p class="aviso-guardado" id="aviso-guardado" hidden>Este navegador no está guardando tu tarjeta (modo incógnito o datos bloqueados). Ábrela en Chrome o Safari normal para no perder tus sellos.</p>
+
+  <!-- ===================== VISTA CLIENTE ===================== -->
+  <main class="vista" id="vista-cliente">
+    <section class="cuerda" aria-labelledby="t-tarjeta">
+      <div class="carton" id="carton">
+        <div class="carton-cab">
+          <p class="carton-eyebrow">Tarjeta de cliente frecuente</p>
+          <span class="carton-folio">No. <b id="folio">----</b></span>
+        </div>
+        <h1 class="carton-nombre" id="t-tarjeta">El Saurín</h1>
+        <div class="liston"><span>Desde 1986 · Tuxtepec, Oax.</span></div>
+        <ol class="sellos" id="sellos" aria-label="Sellos de tu tarjeta"></ol>
+        <div class="carton-pie">
+          <p class="cuenta" aria-live="polite"><b id="cuenta">0</b><span id="cuenta-de">de 10 sellos</span></p>
+          <p class="faltan" id="faltan">Te faltan $2,000 en carne para tu premio</p>
+        </div>
+        <p class="premio-linea"><svg aria-hidden="true"><use href="#regalo"/></svg><span>Al juntar <span class="meta-n">10</span> sellos te regalamos <b class="premio-nombre">$150 de carne + 5 engañadas</b></span></p>
+      </div>
+    </section>
+
+    <div class="franja" id="franja-raspa" hidden>
+      <p id="franja-raspa-txt">Tienes un raspadito sin abrir</p>
+      <button class="btn btn-claro btn-chico" id="franja-raspa-btn">Raspar ahora</button>
+    </div>
+
+    <section class="gracias" id="gracias" hidden aria-labelledby="t-gracias">
+      <h2 id="t-gracias">¡Gracias por tu compra!</h2>
+      <p>¿Cómo te atendimos hoy? Tu opinión en Google ayuda a que más gente de Tuxtepec nos conozca.</p>
+      <div class="fila">
+        <a class="btn btn-claro btn-chico enlace-resena" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#estrella"/></svg>Dejar reseña en Google</a>
+        <button class="btn-texto" id="gracias-cerrar">Ahora no</button>
+      </div>
+    </section>
+
+    <section class="seccion" id="sec-premios" hidden aria-labelledby="t-premios">
+      <h2 class="seccion-titulo" id="t-premios">Mis premios</h2>
+      <p class="seccion-sub">Se quedan guardados en tu celular hasta que los canjees.</p>
+      <ul class="boletos" id="boletos"></ul>
+      <details class="entregados" id="entregados" hidden><summary id="entregados-txt">Premios entregados</summary><ul id="entregados-lista"></ul></details>
+    </section>
+
+    <section class="seccion" aria-labelledby="t-como">
+      <h2 class="seccion-titulo" id="t-como">Cómo funciona</h2>
+      <ol class="pasos">
+        <li><div><b>Compra tu carne</b><span>Por cada <span class="monto-sello">$200</span> en carne, en caja te dan un código QR.</span></div></li>
+        <li><div><b>Escanéalo y raspa</b><span>Ábrelo con la cámara de tu celular, raspa y tus sellos se guardan aquí.</span></div></li>
+        <li><div><b>Junta <span class="meta-n">10</span> y gana</b><span>Te regalamos <span class="premio-nombre">$150 de carne + 5 engañadas</span>. Lo canjeas cuando quieras.</span></div></li>
+      </ol>
+    </section>
+
+    <section class="visita" aria-labelledby="t-visita">
+      <h2 class="seccion-titulo" id="t-visita">¿Cómo te atendimos?</h2>
+      <p class="seccion-sub" style="margin-top:-8px">Cuéntanos en Google. Nos ayuda a mejorar y a que más gente nos encuentre.</p>
+      <div class="botones">
+        <a class="btn btn-claro enlace-resena" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#estrella"/></svg>Dejar reseña en Google</a>
+        <a class="btn btn-borde" id="enlace-mapa" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#pin"/></svg>Cómo llegar</a>
+      </div>
+      <div class="visita-datos">
+        <p><b>Dirección:</b> <span id="dato-direccion"></span></p>
+        <p><b>Horario:</b> <span id="dato-horario"></span></p>
+      </div>
+    </section>
+
+    <footer class="letra-chica">
+      <h2>Reglas de la promoción</h2>
+      <p id="reglas-texto"></p>
+      <p>Tu tarjeta se guarda en este celular y en este navegador. Si cambias de celular o borras los datos del navegador, se pierde; respáldala por WhatsApp para recuperarla.</p>
+      <div class="pie-acciones">
+        <a class="btn-texto" id="enlace-respaldo" href="#" target="_blank" rel="noopener" hidden>Respaldar mi tarjeta por WhatsApp</a>
+        <button class="btn-texto" data-ir="caja">Acceso para el personal</button>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ===================== VISTA CAJA ===================== -->
+  <main class="vista" id="vista-caja" hidden>
+    <div class="caja-cab">
+      <button class="btn-texto" data-ir="cliente" style="align-self:flex-start">← Volver a la tarjeta</button>
+      <h1>Caja</h1>
+      <p>Solo para el personal del Saurín.</p>
+    </div>
+
+    <form class="panel" id="caja-login" novalidate>
+      <h2>Abrir la caja en este celular</h2>
+      <p>Escribe la clave de caja. Es la misma en todos los celulares del personal; con ella se firman los sellos para que nadie los pueda falsificar.</p>
+      <label for="clave1">Clave de caja</label>
+      <input id="clave1" type="password" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+      <label for="clave2">Escríbela otra vez</label>
+      <input id="clave2" type="password" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+      <p class="nota">Mínimo 8 caracteres; mayúsculas y minúsculas cuentan igual. Usa una frase que solo sepa el personal y anótala en un lugar seguro: si se pierde, los sellos ya entregados no se podrán verificar.</p>
+      <p class="error" id="login-error" hidden></p>
+      <button class="btn btn-primario" type="submit" id="login-btn">Abrir caja</button>
+    </form>
+
+    <div id="caja-panel" class="vista" hidden>
+      <div class="tabs" role="tablist" aria-label="Secciones de la caja">
+        <button role="tab" id="tab-venta" aria-controls="panel-venta" aria-selected="true" data-tab="venta">Venta</button>
+        <button role="tab" id="tab-canjear" aria-controls="panel-canjear" aria-selected="false" data-tab="canjear">Canjear</button>
+        <button role="tab" id="tab-resumen" aria-controls="panel-resumen" aria-selected="false" data-tab="resumen">Resumen</button>
+        <button role="tab" id="tab-ajustes" aria-controls="panel-ajustes" aria-selected="false" data-tab="ajustes">Ajustes</button>
+      </div>
+
+      <div id="panel-venta" role="tabpanel" aria-labelledby="tab-venta" class="vista">
+        <form class="panel" id="venta-form" novalidate>
+          <h2>Registrar compra</h2>
+          <label for="monto">Monto de carne en esta compra</label>
+          <div class="monto"><span aria-hidden="true">$</span><input id="monto" type="text" inputmode="numeric" autocomplete="off" placeholder="0" maxlength="6"></div>
+          <div class="atajos" aria-label="Sumar al monto">
+            <button type="button" data-suma="50">+ $50</button>
+            <button type="button" data-suma="100">+ $100</button>
+            <button type="button" data-suma="200">+ $200</button>
+            <button type="button" data-suma="0">Borrar</button>
+          </div>
+          <div class="calc" aria-live="polite">
+            <span class="calc-num" id="calc-num">0</span>
+            <span class="calc-txt"><b id="calc-titulo">sellos</b><span id="calc-pista">Cada $200 en carne = 1 sello</span></span>
+          </div>
+          <p class="error" id="venta-error" hidden></p>
+          <button class="btn btn-primario" type="submit" id="venta-generar" disabled>Generar QR para el cliente</button>
+        </form>
+
+        <div class="panel" id="venta-qr" hidden>
+          <div class="venta-titulo"><b id="venta-sellos">+3</b><span id="venta-monto">sellos · $650 en carne</span></div>
+          <div class="qr-marco" id="venta-qr-img"></div>
+          <p style="text-align:center">Pide al cliente que lo escanee con la cámara de su celular.</p>
+          <p class="codigo-txt" id="venta-codigo"></p>
+          <p class="nota" id="venta-nota-prueba" hidden>En la vista de prueba este QR todavía no abre en otros celulares. Usa «Probar en este celular».</p>
+          <div class="dlg-acciones">
+            <button class="btn btn-primario" id="venta-nueva">Nueva venta</button>
+            <button class="btn btn-tinta" id="venta-probar" hidden>Probar en este celular</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="panel-canjear" role="tabpanel" aria-labelledby="tab-canjear" class="vista" hidden>
+        <div class="panel">
+          <h2>Canjear un premio</h2>
+          <ol class="pasos-caja">
+            <li>El cliente abre <b>Mis premios</b> y toca <b>Canjear en caja</b>.</li>
+            <li>Escanea su código con la cámara de <b>este</b> celular.</li>
+            <li>Si sale <b>Premio válido</b>, entrega el premio y toca <b>Entregar premio</b>.</li>
+          </ol>
+          <details>
+            <summary>¿No escanea? Escribe los códigos</summary>
+            <div>
+              <label for="canje-manual">Códigos que aparecen debajo del QR del cliente</label>
+              <textarea id="canje-manual" rows="4" placeholder="3-0AK7Q9XM-K2M9QD~3" autocapitalize="characters" spellcheck="false"></textarea>
+              <button class="btn btn-tinta" type="button" id="canje-manual-btn">Verificar códigos</button>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div id="panel-resumen" role="tabpanel" aria-labelledby="tab-resumen" class="vista" hidden>
+        <div class="panel">
+          <h2>Hoy</h2>
+          <div class="cifras" id="cifras-hoy"></div>
+        </div>
+        <div class="panel">
+          <h2>Últimos 7 días</h2>
+          <div class="tabla-env"><table class="tabla" id="tabla-dias"></table></div>
+          <p class="nota">Cuenta las ventas y canjes registrados en este celular.</p>
+        </div>
+      </div>
+
+      <div id="panel-ajustes" role="tabpanel" aria-labelledby="tab-ajustes" class="vista" hidden>
+        <div class="panel">
+          <h2>Huella de la clave</h2>
+          <p class="huella" id="huella">----</p>
+          <p class="nota">Todos los celulares de caja deben mostrar la misma huella. Si uno muestra otra, la clave se escribió distinto: ciérrala y vuelve a escribirla.</p>
+        </div>
+        <div class="panel">
+          <h2>Reglas activas</h2>
+          <ul class="reglas" id="reglas-caja"></ul>
+          <p class="nota">Para cambiar las reglas, pídeselo a Claude y se actualizan para todos.</p>
+        </div>
+        <div class="panel">
+          <h2>Cerrar la caja</h2>
+          <p class="nota">Quita la clave de este celular. Los registros de ventas y canjes se conservan.</p>
+          <button class="btn btn-tinta" id="cerrar-caja">Cerrar caja en este celular</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===================== VISTA CANJE ===================== -->
+  <main class="vista" id="vista-canje" hidden>
+    <div class="caja-cab">
+      <button class="btn-texto" data-ir="cliente" style="align-self:flex-start">← Volver a la tarjeta</button>
+      <h1>Canje de premio</h1>
+    </div>
+    <div class="panel" id="canje-sin-caja" hidden>
+      <h2>Este código lo escanea el personal</h2>
+      <p>Muéstralo en caja para recibir tu premio. Si eres del personal, abre la caja en este celular para verificarlo.</p>
+      <button class="btn btn-tinta" data-ir="caja">Soy del personal: abrir caja</button>
+    </div>
+    <div class="panel" id="canje-resultado" hidden>
+      <div class="veredicto" id="canje-veredicto"></div>
+      <ul class="canje-lista" id="canje-lista"></ul>
+      <button class="btn btn-primario" id="canje-entregar" hidden>Entregar premio</button>
+      <p class="entregado-ok" id="canje-hecho" hidden></p>
+      <button class="btn btn-tinta" data-ir="caja">Ir a la caja</button>
+    </div>
+  </main>
+</div>
+
+<!-- ===================== DIÁLOGOS ===================== -->
+<dialog class="dlg" id="dlg-raspa" aria-labelledby="t-raspa">
+  <p class="dlg-eyebrow">Compra registrada</p>
+  <h2 class="dlg-titulo" id="t-raspa" tabindex="-1" autofocus>Raspa y descubre tus sellos</h2>
+  <div class="raspa-area" id="raspa-area">
+    <div class="raspa-premio" id="raspa-premio">
+      <span class="raspa-num" id="raspa-num">+1</span>
+      <span id="raspa-txt">sello para tu tarjeta</span>
+      <span class="raspa-mini" id="raspa-mini"></span>
+    </div>
+    <canvas class="raspa-lienzo" id="raspa-lienzo" aria-hidden="true"></canvas>
+  </div>
+  <button class="btn-texto" id="raspa-destapar" style="align-self:center">Destapar sin raspar</button>
+  <button class="btn btn-primario" id="raspa-guardar" hidden>Guardar en mi tarjeta</button>
+</dialog>
+
+<dialog class="dlg gano" id="dlg-gano" aria-labelledby="t-gano">
+  <div class="gano-sello" aria-hidden="true">¡Premio!</div>
+  <h2 class="dlg-titulo" id="t-gano" tabindex="-1" autofocus>Completaste tu tarjeta</h2>
+  <p class="gano-premio premio-nombre">$150 de carne + 5 engañadas</p>
+  <p>Lo guardamos en <b>Mis premios</b>. Muéstralo en caja cuando quieras canjearlo.</p>
+  <button class="btn btn-primario" id="gano-ver" style="align-self:stretch">Ver mi premio</button>
+</dialog>
+
+<dialog class="dlg" id="dlg-premio" aria-labelledby="t-premio">
+  <p class="dlg-eyebrow">Mis premios</p>
+  <h2 class="dlg-titulo" id="t-premio" tabindex="-1" autofocus>Muestra este código en caja</h2>
+  <p><b class="premio-nombre">$150 de carne + 5 engañadas</b></p>
+  <div class="qr-marco" id="premio-qr"></div>
+  <p class="nota">Sube el brillo de tu pantalla. El personal lo escanea con la cámara de su celular.</p>
+  <details class="entregados" style="color:var(--tinta-2)">
+    <summary>¿No escanea? Ver códigos</summary>
+    <p class="codigo-txt" id="premio-codigos" style="text-align:left;margin-top:6px"></p>
+  </details>
+  <div class="dlg-acciones">
+    <button class="btn btn-tinta" id="premio-recibido">Ya me lo entregaron</button>
+    <button class="btn btn-primario" data-cerrar>Cerrar</button>
+  </div>
+  <button class="btn-texto" id="premio-verificar" hidden style="align-self:center">Verificar en este celular (caja)</button>
+</dialog>
+
+<dialog class="dlg" id="dlg-aviso" aria-labelledby="t-aviso">
+  <h2 class="dlg-titulo" id="t-aviso" tabindex="-1" autofocus>Aviso</h2>
+  <p id="aviso-txt"></p>
+  <button class="btn btn-primario" data-cerrar>Entendido</button>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ===== Generador de QR (modo byte), basado en el algoritmo de Project Nayuki (MIT) ===== */
+var makeQR = (function () {
+  "use strict";
+  var ECC_PER_BLOCK = [
+    [-1, 7, 10, 15, 20, 26, 18, 20, 24, 30, 18, 20, 24, 26, 30, 22, 24, 28, 30, 28, 28, 28, 28, 30, 30, 26, 28, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
+    [-1, 10, 16, 26, 18, 24, 16, 18, 22, 22, 26, 30, 22, 22, 24, 24, 28, 28, 26, 26, 26, 26, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28],
+    [-1, 13, 22, 18, 26, 18, 24, 18, 22, 20, 24, 28, 26, 24, 20, 30, 24, 28, 28, 26, 30, 28, 30, 30, 30, 30, 28, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
+    [-1, 17, 28, 22, 16, 22, 28, 26, 26, 24, 28, 24, 28, 22, 24, 24, 30, 28, 28, 26, 28, 30, 24, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
+  ];
+  var NUM_BLOCKS = [
+    [-1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 4, 4, 4, 4, 4, 6, 6, 6, 6, 7, 8, 8, 9, 9, 10, 12, 12, 12, 13, 14, 15, 16, 17, 18, 19, 19, 20, 21, 22, 24, 25],
+    [-1, 1, 1, 1, 2, 2, 4, 4, 4, 5, 5, 5, 8, 9, 9, 10, 10, 11, 13, 14, 16, 17, 17, 18, 20, 21, 23, 25, 26, 28, 29, 31, 33, 35, 37, 38, 40, 43, 45, 47, 49],
+    [-1, 1, 1, 2, 2, 4, 4, 6, 6, 8, 8, 8, 10, 12, 16, 12, 17, 16, 18, 21, 20, 23, 23, 25, 27, 29, 34, 34, 35, 38, 40, 43, 45, 48, 51, 53, 56, 59, 62, 65, 68],
+    [-1, 1, 1, 2, 4, 4, 4, 5, 6, 8, 8, 11, 11, 16, 16, 18, 16, 19, 21, 25, 25, 25, 34, 30, 32, 35, 37, 40, 42, 45, 48, 51, 54, 57, 60, 63, 66, 70, 74, 77, 81]
+  ];
+  var FORMAT_BITS = [1, 0, 3, 2];
+  function rawModules(ver) {
+    var r = (16 * ver + 128) * ver + 64;
+    if (ver >= 2) { var na = Math.floor(ver / 7) + 2; r -= (25 * na - 10) * na - 55; if (ver >= 7) r -= 36; }
+    return r;
+  }
+  function dataCodewords(ver, ecl) { return Math.floor(rawModules(ver) / 8) - ECC_PER_BLOCK[ecl][ver] * NUM_BLOCKS[ecl][ver]; }
+  function gfMul(x, y) { var z = 0; for (var i = 7; i >= 0; i--) { z = (z << 1) ^ ((z >>> 7) * 0x11d); z ^= ((y >>> i) & 1) * x; } return z; }
+  function rsDivisor(degree) {
+    var res = []; for (var i = 0; i < degree - 1; i++) res.push(0); res.push(1);
+    var root = 1;
+    for (var k = 0; k < degree; k++) {
+      for (var j = 0; j < res.length; j++) { res[j] = gfMul(res[j], root); if (j + 1 < res.length) res[j] ^= res[j + 1]; }
+      root = gfMul(root, 0x02);
+    }
+    return res;
+  }
+  function rsRemainder(data, div) {
+    var res = div.map(function () { return 0; });
+    data.forEach(function (b) { var f = b ^ res.shift(); res.push(0); div.forEach(function (c, i) { res[i] ^= gfMul(c, f); }); });
+    return res;
+  }
+  function utf8(str) { var s = unescape(encodeURIComponent(str)), out = []; for (var i = 0; i < s.length; i++) out.push(s.charCodeAt(i)); return out; }
+  return function makeQR(text) {
+    var data = utf8(text), ecl = 1, ver, cap, used;
+    for (ver = 1; ; ver++) {
+      if (ver > 40) throw new Error("Texto demasiado largo para un QR");
+      cap = dataCodewords(ver, ecl) * 8; used = 4 + (ver < 10 ? 8 : 16) + data.length * 8;
+      if (used <= cap) break;
+    }
+    for (var e = ecl + 1; e <= 3; e++) if (used <= dataCodewords(ver, e) * 8) ecl = e;
+    cap = dataCodewords(ver, ecl) * 8;
+    var bits = [];
+    function put(val, len) { for (var i = len - 1; i >= 0; i--) bits.push((val >>> i) & 1); }
+    put(4, 4); put(data.length, ver < 10 ? 8 : 16); data.forEach(function (b) { put(b, 8); });
+    put(0, Math.min(4, cap - bits.length)); put(0, (8 - (bits.length % 8)) % 8);
+    for (var pad = 0xec; bits.length < cap; pad ^= 0xec ^ 0x11) put(pad, 8);
+    var words = [];
+    for (var bi = 0; bi < bits.length; bi += 8) { var w = 0; for (var bj = 0; bj < 8; bj++) w = (w << 1) | bits[bi + bj]; words.push(w); }
+    var nBlocks = NUM_BLOCKS[ecl][ver], eccLen = ECC_PER_BLOCK[ecl][ver], rawCw = Math.floor(rawModules(ver) / 8);
+    var nShort = nBlocks - (rawCw % nBlocks), shortLen = Math.floor(rawCw / nBlocks), div = rsDivisor(eccLen), blocks = [];
+    for (var i = 0, k = 0; i < nBlocks; i++) {
+      var dat = words.slice(k, k + shortLen - eccLen + (i < nShort ? 0 : 1)); k += dat.length;
+      var ecc = rsRemainder(dat, div); if (i < nShort) dat.push(0); blocks.push(dat.concat(ecc));
+    }
+    var all = [];
+    for (var c = 0; c < blocks[0].length; c++) for (var bk = 0; bk < blocks.length; bk++) if (c !== shortLen - eccLen || bk >= nShort) all.push(blocks[bk][c]);
+    var size = ver * 4 + 17, mod = [], fn = [];
+    for (var y = 0; y < size; y++) { mod.push(new Array(size).fill(false)); fn.push(new Array(size).fill(false)); }
+    function setF(x, y, dark) { mod[y][x] = dark; fn[y][x] = true; }
+    for (var t = 0; t < size; t++) { setF(6, t, t % 2 === 0); setF(t, 6, t % 2 === 0); }
+    function finder(cx, cy) {
+      for (var dy = -4; dy <= 4; dy++) for (var dx = -4; dx <= 4; dx++) {
+        var d = Math.max(Math.abs(dx), Math.abs(dy)), xx = cx + dx, yy = cy + dy;
+        if (xx >= 0 && xx < size && yy >= 0 && yy < size) setF(xx, yy, d !== 2 && d !== 4);
+      }
+    }
+    finder(3, 3); finder(size - 4, 3); finder(3, size - 4);
+    var align = [];
+    if (ver > 1) {
+      var na = Math.floor(ver / 7) + 2, step = Math.floor((ver * 8 + na * 3 + 5) / (na * 4 - 4)) * 2;
+      align = [6]; for (var pos = size - 7; align.length < na; pos -= step) align.splice(1, 0, pos);
+    }
+    for (var ai = 0; ai < align.length; ai++) for (var aj = 0; aj < align.length; aj++) {
+      if ((ai === 0 && aj === 0) || (ai === 0 && aj === align.length - 1) || (ai === align.length - 1 && aj === 0)) continue;
+      for (var ady = -2; ady <= 2; ady++) for (var adx = -2; adx <= 2; adx++) setF(align[ai] + adx, align[aj] + ady, Math.max(Math.abs(adx), Math.abs(ady)) !== 1);
+    }
+    function drawFormat(mask) {
+      var d = (FORMAT_BITS[ecl] << 3) | mask, rem = d;
+      for (var q = 0; q < 10; q++) rem = (rem << 1) ^ ((rem >>> 9) * 0x537);
+      var b = ((d << 10) | rem) ^ 0x5412, bit = function (n) { return ((b >>> n) & 1) !== 0; };
+      for (var a = 0; a <= 5; a++) setF(8, a, bit(a));
+      setF(8, 7, bit(6)); setF(8, 8, bit(7)); setF(7, 8, bit(8));
+      for (var a2 = 9; a2 < 15; a2++) setF(14 - a2, 8, bit(a2));
+      for (var a3 = 0; a3 < 8; a3++) setF(size - 1 - a3, 8, bit(a3));
+      for (var a4 = 8; a4 < 15; a4++) setF(8, size - 15 + a4, bit(a4));
+      setF(8, size - 8, true);
+    }
+    drawFormat(0);
+    if (ver >= 7) {
+      var vr = ver; for (var vq = 0; vq < 12; vq++) vr = (vr << 1) ^ ((vr >>> 11) * 0x1f25);
+      var vb = (ver << 12) | vr;
+      for (var vi = 0; vi < 18; vi++) { var vbit = ((vb >>> vi) & 1) !== 0, va = size - 11 + (vi % 3), vbb = Math.floor(vi / 3); setF(va, vbb, vbit); setF(vbb, va, vbit); }
+    }
+    var idx = 0;
+    for (var right = size - 1; right >= 1; right -= 2) {
+      if (right === 6) right = 5;
+      for (var vert = 0; vert < size; vert++) for (var jj = 0; jj < 2; jj++) {
+        var x = right - jj, up = ((right + 1) & 2) === 0, yy2 = up ? size - 1 - vert : vert;
+        if (!fn[yy2][x] && idx < all.length * 8) { mod[yy2][x] = ((all[idx >>> 3] >>> (7 - (idx & 7))) & 1) !== 0; idx++; }
+      }
+    }
+    function applyMask(m) {
+      for (var y3 = 0; y3 < size; y3++) for (var x3 = 0; x3 < size; x3++) {
+        var inv;
+        switch (m) {
+          case 0: inv = (x3 + y3) % 2 === 0; break;
+          case 1: inv = y3 % 2 === 0; break;
+          case 2: inv = x3 % 3 === 0; break;
+          case 3: inv = (x3 + y3) % 3 === 0; break;
+          case 4: inv = (Math.floor(x3 / 3) + Math.floor(y3 / 2)) % 2 === 0; break;
+          case 5: inv = ((x3 * y3) % 2) + ((x3 * y3) % 3) === 0; break;
+          case 6: inv = (((x3 * y3) % 2) + ((x3 * y3) % 3)) % 2 === 0; break;
+          default: inv = (((x3 + y3) % 2) + ((x3 * y3) % 3)) % 2 === 0;
+        }
+        if (!fn[y3][x3] && inv) mod[y3][x3] = !mod[y3][x3];
+      }
+    }
+    function penalty() {
+      var p = 0, dark = 0;
+      var pat1 = [true, false, true, true, true, false, true, false, false, false, false];
+      var pat2 = [false, false, false, false, true, false, true, true, true, false, true];
+      function lineScore(get) {
+        var s = 0;
+        for (var a = 0; a < size; a++) {
+          var run = 1;
+          for (var b2 = 1; b2 < size; b2++) { if (get(a, b2) === get(a, b2 - 1)) run++; else { if (run >= 5) s += 3 + (run - 5); run = 1; } }
+          if (run >= 5) s += 3 + (run - 5);
+          for (var st = 0; st + 11 <= size; st++) {
+            var m1 = true, m2 = true;
+            for (var q2 = 0; q2 < 11; q2++) { var v = get(a, st + q2); if (v !== pat1[q2]) m1 = false; if (v !== pat2[q2]) m2 = false; if (!m1 && !m2) break; }
+            if (m1) s += 40; if (m2) s += 40;
+          }
+        }
+        return s;
+      }
+      p += lineScore(function (r, c2) { return mod[r][c2]; });
+      p += lineScore(function (c2, r) { return mod[r][c2]; });
+      for (var y4 = 0; y4 < size - 1; y4++) for (var x4 = 0; x4 < size - 1; x4++) {
+        var cc = mod[y4][x4]; if (cc === mod[y4][x4 + 1] && cc === mod[y4 + 1][x4] && cc === mod[y4 + 1][x4 + 1]) p += 3;
+      }
+      for (var y5 = 0; y5 < size; y5++) for (var x5 = 0; x5 < size; x5++) if (mod[y5][x5]) dark++;
+      var total = size * size; p += (Math.ceil(Math.abs(dark * 20 - total * 10) / total) - 1) * 10;
+      return p;
+    }
+    var best = 0, bestP = Infinity;
+    for (var mk = 0; mk < 8; mk++) { applyMask(mk); drawFormat(mk); var pp = penalty(); if (pp < bestP) { bestP = pp; best = mk; } applyMask(mk); }
+    applyMask(best); drawFormat(best);
+    return { size: size, version: ver, get: function (x, y) { return x >= 0 && x < size && y >= 0 && y < size && mod[y][x]; } };
+  };
+})();
+function qrSVG(text, dark, light) {
+  var q = makeQR(text), m = 4, n = q.size + m * 2, d = "";
+  for (var y = 0; y < q.size; y++) for (var x = 0; x < q.size; x++) if (q.get(x, y)) d += "M" + (x + m) + " " + (y + m) + "h1v1h-1z";
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + n + " " + n + '" shape-rendering="crispEdges" role="img" aria-label="Código QR"><rect width="' + n + '" height="' + n + '" fill="' + (light || "#fff") + '"/><path d="' + d + '" fill="' + (dark || "#000") + '"/></svg>';
+}
+
+/* ===================== App de lealtad ===================== */
+(function () {
+  "use strict";
+
+  // ---- Reglas del programa (cambiarlas aquí) ----
+  var CONFIG = {
+    montoPorSello: 200,
+    meta: 10,
+    premio: "$150 de carne + 5 engañadas",
+    resenaUrl: "https://search.google.com/local/writereview?placeid=ChIJhwcxu_Xmw4UR0Lg2N6_nHCc",
+    mapaUrl: "https://www.google.com/maps/search/?api=1&query=Carnitas%20Michoacanas%20El%20Saur%C3%ADn%20Tuxtepec&query_place_id=ChIJhwcxu_Xmw4UR0Lg2N6_nHCc",
+    direccion: "Calle 1° de Mayo 132, entre Sebastián Ortiz y Ponciano Medina, col. María Luisa, Tuxtepec, Oax.",
+    horario: "Todos los días, de 12:00 a 5:00 p. m.",
+    urlPublica: "https://carnitaselsaurin.github.io/" // dirección pública definitiva (GitHub Pages); vacía = la página actual
+  };
+
+  var B32 = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
+  var RX_COD = /^(\d{1,3})-([0-9A-HJKMNP-TV-Z]{8})-([0-9A-HJKMNP-TV-Z]{6})$/;
+  var RX_ITEM = /^(\d{1,3})-([0-9A-HJKMNP-TV-Z]{8})-([0-9A-HJKMNP-TV-Z]{6})~(\d{1,3})$/;
+  var EPOCA = Date.UTC(2026, 0, 1);
+  var ROT = [-8, 5, -3, 9, -6, 4, -10, 7, -2, 6];
+  var te = new TextEncoder();
+  var EN_CLAUDE = !!(window.claude && typeof window.claude.use === "function") || /claude/i.test(location.hostname);
+  var SELLO = '<svg viewBox="0 0 64 64" aria-hidden="true"><g filter="url(#tinta)"><use href="#cerdo"/></g></svg>';
+
+  function $(s) { return document.querySelector(s); }
+  function $$(s) { return Array.prototype.slice.call(document.querySelectorAll(s)); }
+  var fmtDinero = new Intl.NumberFormat("es-MX", { style: "currency", currency: "MXN", maximumFractionDigits: 0 });
+  function dinero(n) { return fmtDinero.format(n); }
+  function fechaCorta(t) { return new Date(t).toLocaleDateString("es-MX", { day: "numeric", month: "short" }); }
+  function hora(t) { return new Date(t).toLocaleTimeString("es-MX", { hour: "numeric", minute: "2-digit" }); }
+
+  // ---- Almacenamiento (con respaldo en memoria si el navegador lo bloquea) ----
+  var memoria = {}, almacenOK = true;
+  try { localStorage.setItem("saurin.prueba", "1"); localStorage.removeItem("saurin.prueba"); } catch (e) { almacenOK = false; }
+  function leer(k, def) {
+    if (almacenOK) { try { var v = localStorage.getItem(k); if (v != null) return JSON.parse(v); } catch (e) { /* sigue */ } }
+    return Object.prototype.hasOwnProperty.call(memoria, k) ? memoria[k] : def;
+  }
+  function guardar(k, v) {
+    memoria[k] = v;
+    if (almacenOK) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { almacenOK = false; } }
+  }
+  function borrar(k) { delete memoria[k]; try { localStorage.removeItem(k); } catch (e) { /* nada */ } }
+
+  function aleatorio(len) { var a = new Uint8Array(len), s = ""; crypto.getRandomValues(a); for (var i = 0; i < len; i++) s += B32[a[i] & 31]; return s; }
+  function numB32(n, len) { var s = ""; for (var i = 0; i < len; i++) { s = B32[n & 31] + s; n >>>= 5; } return s; }
+  function b32Num(s) { var n = 0; for (var i = 0; i < s.length; i++) n = n * 32 + B32.indexOf(s[i]); return n; }
+  function diaDe(d) { d = d || new Date(); return Math.floor((Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) - EPOCA) / 864e5); }
+  function fechaDeDia(n) { var d = new Date(EPOCA + n * 864e5); return new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()); }
+  function bytesAB64(b) { var s = ""; for (var i = 0; i < b.length; i++) s += String.fromCharCode(b[i]); return btoa(s); }
+  function b64ABytes(s) { var t = atob(s), b = new Uint8Array(t.length); for (var i = 0; i < t.length; i++) b[i] = t.charCodeAt(i); return b; }
+  function urlBase() {
+    if (CONFIG.urlPublica) return CONFIG.urlPublica.replace(/#.*$/, "");
+    var u = location.href.replace(/#.*$/, "");
+    return u;
+  }
+  function parseCodigo(s) {
+    var m = RX_COD.exec(s); if (!m) return null;
+    var n = +m[1]; if (n < 1 || n > 500) return null;
+    return { n: n, dn: m[2], mac: m[3], str: s };
+  }
+  function parseItem(s) {
+    var m = RX_ITEM.exec(s); if (!m) return null;
+    var c = parseCodigo(m[1] + "-" + m[2] + "-" + m[3]); var k = +m[4];
+    if (!c || k < 1) return null;
+    return { c: c, k: k };
+  }
+
+  // =================== Tarjeta del cliente ===================
+  var K_TARJETA = "saurin.tarjeta.v1";
+  var tarjeta = leer(K_TARJETA, null);
+  if (!tarjeta || tarjeta.v !== 1 || typeof tarjeta.codigos !== "object") {
+    tarjeta = { v: 1, id: aleatorio(4), creada: Date.now(), codigos: {}, premios: [] };
+    guardar(K_TARJETA, tarjeta);
+  }
+  function guardarTarjeta() { guardar(K_TARJETA, tarjeta); }
+  function sellosActuales() {
+    var s = 0; Object.keys(tarjeta.codigos).forEach(function (dn) { var c = tarjeta.codigos[dn]; if (c.revelado) s += c.rest; }); return s;
+  }
+  function porRaspar() { return Object.keys(tarjeta.codigos).filter(function (dn) { return !tarjeta.codigos[dn].revelado; }); }
+  function formarPremios() {
+    var nuevos = 0;
+    while (sellosActuales() >= CONFIG.meta) {
+      var lista = Object.keys(tarjeta.codigos).filter(function (dn) { var c = tarjeta.codigos[dn]; return c.revelado && c.rest > 0; })
+        .sort(function (a, b) { return (tarjeta.codigos[a].t - tarjeta.codigos[b].t) || (a < b ? -1 : 1); });
+      var falta = CONFIG.meta, items = [];
+      for (var i = 0; i < lista.length && falta > 0; i++) {
+        var c = tarjeta.codigos[lista[i]], k = Math.min(c.rest, falta);
+        c.rest -= k; falta -= k; items.push([c.n + "-" + lista[i] + "-" + c.mac, k]);
+      }
+      tarjeta.premios.push({ id: aleatorio(6), t: Date.now(), items: items, estado: "pendiente" });
+      nuevos++;
+    }
+    if (nuevos) guardarTarjeta();
+    return nuevos;
+  }
+  function cargaPremio(p) { return p.items.map(function (it) { return it[0] + "~" + it[1]; }).join("."); }
+
+  function pintarTarjeta(total, desde) {
+    if (total == null) total = sellosActuales();
+    var ol = $("#sellos"); ol.textContent = "";
+    for (var i = 0; i < CONFIG.meta; i++) {
+      var li = document.createElement("li"), lleno = i < total;
+      li.className = "sello" + (lleno ? " lleno" : "") + (i === CONFIG.meta - 1 ? " meta" : "");
+      li.style.setProperty("--r", ROT[i % ROT.length] + "deg");
+      if (lleno) {
+        li.innerHTML = SELLO;
+        if (desde != null && i >= desde) { li.classList.add("nuevo"); li.style.setProperty("--d", (i - desde) * 170 + "ms"); }
+      } else if (i === CONFIG.meta - 1) {
+        li.innerHTML = '<span class="meta-txt">Premio</span>';
+      } else {
+        li.innerHTML = '<span class="num">' + (i + 1) + "</span>";
+      }
+      li.setAttribute("aria-label", "Sello " + (i + 1) + (lleno ? ": marcado" : ": vacío"));
+      ol.appendChild(li);
+    }
+    $("#cuenta").textContent = total;
+    $("#cuenta-de").textContent = "de " + CONFIG.meta + " sellos";
+    var faltan = Math.max(0, CONFIG.meta - total) * CONFIG.montoPorSello;
+    $("#faltan").textContent = total >= CONFIG.meta ? "¡Tarjeta completa!" : total === 0 ? "Empieza con tu próxima compra de carne" : "Te faltan " + dinero(faltan) + " en carne para tu premio";
+    if (desde != null) { var cart = $("#carton"); cart.classList.remove("golpe"); void cart.offsetWidth; cart.classList.add("golpe"); }
+  }
+  function pintarPremios() {
+    var pend = tarjeta.premios.filter(function (p) { return p.estado === "pendiente"; });
+    var ent = tarjeta.premios.filter(function (p) { return p.estado === "entregado"; });
+    $("#sec-premios").hidden = !pend.length && !ent.length;
+    var ul = $("#boletos"); ul.textContent = "";
+    pend.forEach(function (p) {
+      var li = document.createElement("li"); li.className = "boleto";
+      var txt = document.createElement("div"); txt.className = "boleto-txt";
+      var b = document.createElement("b"); b.textContent = CONFIG.premio;
+      var s = document.createElement("span"); s.textContent = "Ganado el " + fechaCorta(p.t);
+      txt.appendChild(b); txt.appendChild(s);
+      var btn = document.createElement("button"); btn.className = "btn btn-primario btn-chico"; btn.textContent = "Canjear en caja";
+      btn.addEventListener("click", function () { abrirPremio(p.id); });
+      li.appendChild(txt); li.appendChild(btn); ul.appendChild(li);
+    });
+    $("#entregados").hidden = !ent.length;
+    $("#entregados-txt").textContent = ent.length === 1 ? "1 premio entregado" : ent.length + " premios entregados";
+    var el = $("#entregados-lista"); el.textContent = "";
+    ent.forEach(function (p) { var li = document.createElement("li"); li.textContent = CONFIG.premio + " · entregado el " + fechaCorta(p.tEntregado || p.t); el.appendChild(li); });
+  }
+  function pintarFranja() {
+    var p = porRaspar();
+    $("#franja-raspa").hidden = !p.length;
+    $("#franja-raspa-txt").textContent = p.length === 1 ? "Tienes un raspadito sin abrir" : "Tienes " + p.length + " raspaditos sin abrir";
+  }
+  function pintarRespaldo() {
+    var a = $("#enlace-respaldo"), carga = cargaRespaldo();
+    a.hidden = !carga;
+    if (carga) a.href = "https://wa.me/?text=" + encodeURIComponent("Mi tarjeta de sellos de Carnitas El Saurín. Ábrela para recuperarla: " + urlBase() + "#b-" + carga);
+  }
+  function cargaRespaldo() {
+    var cods = Object.keys(tarjeta.codigos).filter(function (dn) { return tarjeta.codigos[dn].rest > 0; })
+      .map(function (dn) { var c = tarjeta.codigos[dn]; return c.n + "-" + dn + "-" + c.mac + "~" + c.rest; });
+    var prem = tarjeta.premios.filter(function (p) { return p.estado === "pendiente"; }).map(cargaPremio);
+    if (!cods.length && !prem.length) return "";
+    return [cods.join(".")].concat(prem).join("_");
+  }
+  function pintarCliente() {
+    $("#folio").textContent = tarjeta.id;
+    pintarTarjeta(); pintarPremios(); pintarFranja(); pintarRespaldo();
+  }
+
+  // ---- Recibir un código escaneado ----
+  function recibirCodigo(str) {
+    var c = parseCodigo(str);
+    irA("cliente");
+    if (!c) { aviso("No pudimos leer este código", "Pide en caja que te muestren el QR otra vez."); return; }
+    if (tarjeta.codigos[c.dn]) { aviso("Este código ya está en tu tarjeta", "Cada código se registra una sola vez. Tus sellos siguen guardados."); return; }
+    tarjeta.codigos[c.dn] = { n: c.n, mac: c.mac, t: Date.now(), rest: c.n, revelado: false };
+    guardarTarjeta();
+    pintarCliente();
+    abrirRaspa(c.dn);
+  }
+
+  // ---- Raspadito ----
+  var raspaDn = null, lienzo, ctx, rascando = false, ultimo = null, trazos = 0, destapado = false;
+  function abrirRaspa(dn) {
+    var c = tarjeta.codigos[dn]; if (!c) return;
+    raspaDn = dn; destapado = false;
+    $("#raspa-num").textContent = "+" + c.n;
+    $("#raspa-txt").textContent = c.n === 1 ? "sello para tu tarjeta" : "sellos para tu tarjeta";
+    var mini = $("#raspa-mini"); mini.innerHTML = "";
+    for (var i = 0; i < Math.min(c.n, 10); i++) mini.insertAdjacentHTML("beforeend", SELLO);
+    $("#raspa-guardar").hidden = true; $("#raspa-destapar").hidden = false;
+    abrirDlg("#dlg-raspa");
+    requestAnimationFrame(function () { pintarLamina(); });
+  }
+  function pintarLamina() {
+    lienzo = $("#raspa-lienzo"); lienzo.classList.remove("fuera");
+    var r = lienzo.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1);
+    var w = Math.max(1, r.width), h = Math.max(1, r.height);
+    lienzo.width = Math.round(w * dpr); lienzo.height = Math.round(h * dpr);
+    ctx = lienzo.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.globalCompositeOperation = "source-over";
+    var g = ctx.createLinearGradient(0, 0, w, h);
+    g.addColorStop(0, "#7a1626"); g.addColorStop(0.5, "#a12a3c"); g.addColorStop(1, "#66121f");
+    ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+    ctx.strokeStyle = "rgba(230,196,122,0.22)"; ctx.lineWidth = 1;
+    for (var x = -h; x < w; x += 9) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + h, h); ctx.stroke(); }
+    ctx.strokeStyle = "rgba(230,196,122,0.7)"; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+    ctx.strokeRect(9, 9, w - 18, h - 18); ctx.setLineDash([]);
+    ctx.fillStyle = "#f4e7cf"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    ctx.font = '28px "Alfa Slab One", Rockwell, Georgia, serif'; ctx.fillText("RASPA AQUÍ", w / 2, h / 2 - 8);
+    ctx.font = '600 13px "Libre Franklin", Arial, sans-serif'; ctx.fillStyle = "rgba(244,231,207,0.85)";
+    ctx.fillText("con tu dedo", w / 2, h / 2 + 22);
+    trazos = 0;
+  }
+  function posEn(ev) { var r = lienzo.getBoundingClientRect(); return { x: ev.clientX - r.left, y: ev.clientY - r.top }; }
+  function rascar(p) {
+    ctx.globalCompositeOperation = "destination-out"; ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.lineWidth = 38;
+    ctx.beginPath(); ctx.moveTo((ultimo || p).x, (ultimo || p).y); ctx.lineTo(p.x + 0.01, p.y); ctx.stroke();
+    ultimo = p;
+    if (++trazos % 8 === 0 && proporcionRaspada() > 0.5) destapar();
+  }
+  function proporcionRaspada() {
+    var w = lienzo.width, h = lienzo.height, d, claro = 0, tot = 0, paso = 10;
+    try { d = ctx.getImageData(0, 0, w, h).data; } catch (e) { return 1; }
+    for (var y = 0; y < h; y += paso) for (var x = 0; x < w; x += paso) { tot++; if (d[(y * w + x) * 4 + 3] < 50) claro++; }
+    return claro / tot;
+  }
+  function destapar() {
+    if (destapado) return; destapado = true; rascando = false;
+    lienzo.classList.add("fuera");
+    $("#raspa-destapar").hidden = true; $("#raspa-guardar").hidden = false;
+    try { if (navigator.vibrate) navigator.vibrate(30); } catch (e) { /* nada */ }
+    setTimeout(function () { $("#raspa-guardar").focus(); }, 60);
+  }
+  function guardarRaspa() {
+    var c = tarjeta.codigos[raspaDn]; if (!c) { cerrarDlg("#dlg-raspa"); return; }
+    var antes = sellosActuales();
+    c.revelado = true; guardarTarjeta();
+    cerrarDlg("#dlg-raspa");
+    var premios = formarPremios();
+    if (premios) {
+      pintarTarjeta(CONFIG.meta, antes);
+      setTimeout(function () { abrirDlg("#dlg-gano"); }, 650 + (CONFIG.meta - antes) * 170);
+    } else {
+      pintarTarjeta(null, antes);
+      toast("¡+" + c.n + (c.n === 1 ? " sello!" : " sellos!") + " Llevas " + sellosActuales() + " de " + CONFIG.meta);
+    }
+    pintarPremios(); pintarFranja(); pintarRespaldo();
+    $("#gracias").hidden = false;
+  }
+
+  // ---- Premios ----
+  var premioAbierto = null, confirmarRecibido = false;
+  function abrirPremio(id) {
+    var p = tarjeta.premios.filter(function (x) { return x.id === id; })[0]; if (!p) return;
+    premioAbierto = p; confirmarRecibido = false;
+    $("#premio-recibido").textContent = "Ya me lo entregaron";
+    var carga = cargaPremio(p);
+    $("#premio-qr").innerHTML = qrSVG(urlBase() + "#p-" + carga, "#24160e", "#ffffff");
+    $("#premio-codigos").textContent = p.items.map(function (it) { return it[0] + "~" + it[1]; }).join("\n");
+    $("#premio-codigos").style.whiteSpace = "pre-line";
+    $("#premio-verificar").hidden = !claveHmac;
+    abrirDlg("#dlg-premio");
+  }
+  function marcarEntregado(p) { p.estado = "entregado"; p.tEntregado = Date.now(); guardarTarjeta(); pintarPremios(); pintarRespaldo(); }
+
+  // ---- Respaldo ----
+  function importarRespaldo(s) {
+    irA("cliente");
+    var partes = s.split("_"), sellos = 0, premios = 0;
+    (partes[0] ? partes[0].split(".") : []).forEach(function (txt) {
+      var it = parseItem(txt); if (!it || tarjeta.codigos[it.c.dn]) return;
+      var k = Math.min(it.k, it.c.n);
+      tarjeta.codigos[it.c.dn] = { n: it.c.n, mac: it.c.mac, t: Date.now(), rest: k, revelado: true }; sellos += k;
+    });
+    partes.slice(1).forEach(function (pz) {
+      var items = pz.split(".").map(parseItem).filter(Boolean); if (!items.length) return;
+      var firma = items.map(function (i) { return i.c.str + "~" + i.k; }).join(".");
+      if (tarjeta.premios.some(function (p) { return cargaPremio(p) === firma; })) return;
+      tarjeta.premios.push({ id: aleatorio(6), t: Date.now(), items: items.map(function (i) { return [i.c.str, i.k]; }), estado: "pendiente" });
+      items.forEach(function (i) { if (!tarjeta.codigos[i.c.dn]) tarjeta.codigos[i.c.dn] = { n: i.c.n, mac: i.c.mac, t: Date.now(), rest: 0, revelado: true }; });
+      premios++;
+    });
+    guardarTarjeta(); formarPremios(); pintarCliente();
+    if (sellos || premios) aviso("Tarjeta recuperada", "Agregamos " + sellos + (sellos === 1 ? " sello" : " sellos") + (premios ? " y " + premios + (premios === 1 ? " premio" : " premios") : "") + " a este celular.");
+    else aviso("Tu tarjeta ya estaba aquí", "Todo lo de ese respaldo ya está guardado en este celular.");
+  }
+
+  // =================== Caja ===================
+  var K_CLAVE = "saurin.caja.clave.v1", K_LIBRO = "saurin.caja.libro.v1";
+  var claveHmac = null, huella = "", canjePendiente = null, canjeActual = null;
+  function leerLibro() {
+    var l = leer(K_LIBRO, null);
+    if (!l || l.v !== 1) l = { v: 1, emitidos: {}, usados: {}, canjes: [] };
+    return l;
+  }
+  function guardarLibro(l) {
+    var limite = diaDe() - 400;
+    Object.keys(l.emitidos).forEach(function (dn) { if (b32Num(dn.slice(0, 3)) < limite) delete l.emitidos[dn]; });
+    if (l.canjes.length > 3000) l.canjes = l.canjes.slice(-3000);
+    guardar(K_LIBRO, l);
+  }
+  function cargarClave() {
+    var c = leer(K_CLAVE, null);
+    if (!c || !window.crypto || !crypto.subtle) return Promise.resolve(false);
+    return crypto.subtle.importKey("raw", b64ABytes(c.raw), { name: "HMAC", hash: "SHA-256" }, false, ["sign"])
+      .then(function (k) { claveHmac = k; huella = c.huella; return true; })
+      .catch(function () { return false; });
+  }
+  function firmar(msg) {
+    return crypto.subtle.sign("HMAC", claveHmac, te.encode(msg)).then(function (buf) {
+      var s = new Uint8Array(buf), v = ((s[0] << 22) | (s[1] << 14) | (s[2] << 6) | (s[3] >>> 2)) >>> 0, out = "";
+      for (var i = 0; i < 6; i++) { out = B32[v & 31] + out; v >>>= 5; }
+      return out;
+    });
+  }
+  function macDe(n, dn) { return firmar("S1|" + n + "|" + dn); }
+  function abrirCaja(frase) {
+    var bits;
+    return crypto.subtle.importKey("raw", te.encode(frase), "PBKDF2", false, ["deriveBits"])
+      .then(function (base) { return crypto.subtle.deriveBits({ name: "PBKDF2", hash: "SHA-256", salt: te.encode("saurin-lealtad-v1"), iterations: 200000 }, base, 256); })
+      .then(function (b) { bits = new Uint8Array(b); return crypto.subtle.importKey("raw", bits, { name: "HMAC", hash: "SHA-256" }, false, ["sign"]); })
+      .then(function (k) { claveHmac = k; return firmar("huella"); })
+      .then(function (h) { huella = h.slice(0, 4); guardar(K_CLAVE, { raw: bytesAB64(bits), huella: huella }); });
+  }
+  function emitir(monto) {
+    var n = Math.floor(monto / CONFIG.montoPorSello), libro = leerLibro(), dn;
+    do { dn = numB32(diaDe(), 3) + aleatorio(5); } while (libro.emitidos[dn] || libro.usados[dn]);
+    return macDe(n, dn).then(function (mac) {
+      libro.emitidos[dn] = { n: n, m: monto, t: Date.now() };
+      guardarLibro(libro);
+      return { n: n, dn: dn, mac: mac, str: n + "-" + dn + "-" + mac };
+    });
+  }
+  function verificar(items) {
+    var libro = leerLibro(), sumaPorCodigo = {}, res = [];
+    return items.reduce(function (prom, it) {
+      return prom.then(function () {
+        if (!it.c) { res.push({ txt: it.txt, ok: false, motivo: "Código ilegible" }); return; }
+        return macDe(it.c.n, it.c.dn).then(function (mac) {
+          var base = { txt: it.c.str, c: it.c, k: it.k };
+          if (mac !== it.c.mac) { base.ok = false; base.motivo = "No es un código de esta caja o fue alterado"; res.push(base); return; }
+          var usados = libro.usados[it.c.dn] || 0, ya = sumaPorCodigo[it.c.dn] || 0;
+          if (usados + ya + it.k > it.c.n) { base.ok = false; base.motivo = usados ? "Estos sellos ya se canjearon antes" : "Sellos repetidos"; res.push(base); return; }
+          sumaPorCodigo[it.c.dn] = ya + it.k; base.ok = true; res.push(base);
+        });
+      });
+    }, Promise.resolve()).then(function () {
+      var total = res.reduce(function (s, r) { return s + (r.ok ? r.k : 0); }, 0);
+      return { res: res, total: total, valido: res.length > 0 && res.every(function (r) { return r.ok; }) && total >= CONFIG.meta };
+    });
+  }
+
+  function pintarCaja() {
+    var abierta = !!claveHmac;
+    $("#caja-login").hidden = abierta;
+    $("#caja-panel").hidden = !abierta;
+    if (abierta) { $("#huella").textContent = huella; pintarResumen(); }
+  }
+  function elegirTab(nombre) {
+    $$(".tabs [role=tab]").forEach(function (b) {
+      var si = b.getAttribute("data-tab") === nombre;
+      b.setAttribute("aria-selected", si ? "true" : "false");
+      $("#panel-" + b.getAttribute("data-tab")).hidden = !si;
+    });
+    if (nombre === "resumen") pintarResumen();
+  }
+  function montoActual() { var v = parseInt(($("#monto").value || "").replace(/\D/g, ""), 10); return isNaN(v) ? 0 : v; }
+  function actualizarCalculo() {
+    var m = montoActual(), n = Math.floor(m / CONFIG.montoPorSello), resto = m % CONFIG.montoPorSello;
+    $("#calc-num").textContent = n;
+    $("#calc-titulo").textContent = n === 1 ? "sello" : "sellos";
+    var pista;
+    if (!m) pista = "Cada " + dinero(CONFIG.montoPorSello) + " en carne = 1 sello";
+    else if (n === 0) pista = "Le faltan " + dinero(CONFIG.montoPorSello - resto) + " para su primer sello";
+    else if (resto) pista = "Con " + dinero(CONFIG.montoPorSello - resto) + " más se lleva " + (n + 1) + " sellos";
+    else pista = "Compra exacta: " + n + (n === 1 ? " sello" : " sellos");
+    $("#calc-pista").textContent = pista;
+    $("#venta-generar").disabled = n < 1;
+  }
+  var ultimoEmitido = null;
+  function mostrarQRVenta(cod, monto) {
+    ultimoEmitido = cod;
+    $("#venta-sellos").textContent = "+" + cod.n;
+    $("#venta-monto").textContent = (cod.n === 1 ? "sello" : "sellos") + " · " + dinero(monto) + " en carne";
+    $("#venta-qr-img").innerHTML = qrSVG(urlBase() + "#s" + cod.str, "#24160e", "#ffffff");
+    $("#venta-codigo").textContent = cod.str;
+    $("#venta-form").hidden = true; $("#venta-qr").hidden = false;
+    $("#venta-probar").hidden = !EN_CLAUDE; $("#venta-nota-prueba").hidden = !EN_CLAUDE || !!CONFIG.urlPublica;
+  }
+  function nuevaVenta() {
+    $("#venta-qr").hidden = true; $("#venta-form").hidden = false;
+    $("#monto").value = ""; actualizarCalculo(); $("#venta-error").hidden = true;
+    setTimeout(function () { $("#monto").focus(); }, 30);
+  }
+
+  function pintarResumen() {
+    var libro = leerLibro(), hoy = diaDe(), dias = {};
+    function dia(d) { if (!dias[d]) dias[d] = { ventas: 0, monto: 0, sellos: 0, premios: 0 }; return dias[d]; }
+    Object.keys(libro.emitidos).forEach(function (dn) { var e = libro.emitidos[dn], d = dia(b32Num(dn.slice(0, 3))); d.ventas++; d.monto += e.m; d.sellos += e.n; });
+    libro.canjes.forEach(function (c) { dia(diaDe(new Date(c.t))).premios++; });
+    var h = dias[hoy] || { ventas: 0, monto: 0, sellos: 0, premios: 0 };
+    var cifras = [[h.ventas, "Ventas con sello"], [dinero(h.monto), "Carne registrada"], [h.sellos, "Sellos entregados"], [h.premios, "Premios canjeados"]];
+    var cont = $("#cifras-hoy"); cont.textContent = "";
+    cifras.forEach(function (c) { var d = document.createElement("div"); d.className = "cifra"; var b = document.createElement("b"); b.textContent = c[0]; var s = document.createElement("span"); s.textContent = c[1]; d.appendChild(b); d.appendChild(s); cont.appendChild(d); });
+    var filas = "<thead><tr><th>Día</th><th>Ventas</th><th>Carne</th><th>Sellos</th><th>Premios</th></tr></thead><tbody>";
+    for (var i = 0; i < 7; i++) {
+      var dn = hoy - i, x = dias[dn] || { ventas: 0, monto: 0, sellos: 0, premios: 0 };
+      var etiqueta = i === 0 ? "Hoy" : i === 1 ? "Ayer" : fechaDeDia(dn).toLocaleDateString("es-MX", { weekday: "short", day: "numeric" });
+      filas += "<tr><td>" + etiqueta + "</td><td>" + x.ventas + "</td><td>" + dinero(x.monto) + "</td><td>" + x.sellos + "</td><td>" + x.premios + "</td></tr>";
+    }
+    $("#tabla-dias").innerHTML = filas + "</tbody>";
+  }
+
+  // ---- Canje ----
+  function mostrarCanje(carga) {
+    irA("canje");
+    canjeActual = null;
+    $("#canje-hecho").hidden = true; $("#canje-entregar").hidden = true;
+    if (!claveHmac) { canjePendiente = carga; $("#canje-sin-caja").hidden = false; $("#canje-resultado").hidden = true; return; }
+    $("#canje-sin-caja").hidden = true; $("#canje-resultado").hidden = false;
+    var items = carga.split(/[\s.,;]+/).filter(Boolean).map(function (t) { var it = parseItem(t); return it ? it : { txt: t, c: null }; });
+    var ver = $("#canje-veredicto"); ver.className = "veredicto"; ver.innerHTML = "<b>Verificando…</b>";
+    $("#canje-lista").textContent = "";
+    verificar(items).then(function (r) {
+      canjeActual = { carga: carga, r: r };
+      ver.className = "veredicto " + (r.valido ? "si" : "no");
+      ver.textContent = "";
+      var b = document.createElement("b"), s = document.createElement("span");
+      if (r.valido) { b.textContent = "Premio válido"; s.textContent = "Entrega: " + CONFIG.premio; }
+      else {
+        b.textContent = "No se puede entregar";
+        var malos = r.res.filter(function (x) { return !x.ok; });
+        s.textContent = malos.length ? malos[0].motivo + "." : "La tarjeta tiene " + r.total + " de " + CONFIG.meta + " sellos.";
+      }
+      ver.appendChild(b); ver.appendChild(s);
+      var ul = $("#canje-lista");
+      r.res.forEach(function (x) {
+        var li = document.createElement("li");
+        var m = document.createElement("span"); m.className = x.ok ? "marca-ok" : "marca-no"; m.textContent = x.ok ? "✓" : "✕"; m.setAttribute("aria-label", x.ok ? "válido" : "no válido");
+        var mid = document.createElement("div"); var code = document.createElement("code"); code.textContent = x.txt; mid.appendChild(code);
+        var sm = document.createElement("small"); sm.textContent = x.ok ? "Emitido el " + fechaDeDia(b32Num(x.c.dn.slice(0, 3))).toLocaleDateString("es-MX", { day: "numeric", month: "short" }) : x.motivo; mid.appendChild(sm);
+        var k = document.createElement("span"); k.className = "k"; k.textContent = x.k ? "+" + x.k : "";
+        li.appendChild(m); li.appendChild(mid); li.appendChild(k); ul.appendChild(li);
+      });
+      $("#canje-entregar").hidden = !r.valido;
+    });
+  }
+  function entregarPremio() {
+    if (!canjeActual || !canjeActual.r.valido) return;
+    var carga = canjeActual.carga;
+    var items = carga.split(/[\s.,;]+/).filter(Boolean).map(parseItem).filter(Boolean);
+    $("#canje-entregar").disabled = true;
+    verificar(items).then(function (r) {
+      $("#canje-entregar").disabled = false;
+      if (!r.valido) { mostrarCanje(carga); return; }
+      var libro = leerLibro();
+      r.res.forEach(function (x) { libro.usados[x.c.dn] = (libro.usados[x.c.dn] || 0) + x.k; });
+      libro.canjes.push({ t: Date.now(), items: r.res.map(function (x) { return [x.c.dn, x.k]; }) });
+      guardarLibro(libro);
+      // Si el premio también está en la tarjeta de este celular (pruebas), se marca como entregado
+      tarjeta.premios.forEach(function (p) { if (p.estado === "pendiente" && cargaPremio(p) === items.map(function (i) { return i.c.str + "~" + i.k; }).join(".")) marcarEntregado(p); });
+      $("#canje-entregar").hidden = true;
+      $("#canje-hecho").hidden = false;
+      $("#canje-hecho").textContent = "Premio entregado (" + hora(Date.now()) + "). Ya no se puede volver a canjear.";
+      canjeActual = null;
+    });
+  }
+
+  // =================== Navegación y diálogos ===================
+  var vistaActual = "cliente";
+  function irA(v) {
+    vistaActual = v;
+    $("#vista-cliente").hidden = v !== "cliente";
+    $("#vista-caja").hidden = v !== "caja";
+    $("#vista-canje").hidden = v !== "canje";
+    if (v === "caja") pintarCaja();
+    if (v === "cliente") pintarCliente();
+    window.scrollTo(0, 0);
+  }
+  function abrirDlg(sel) {
+    var d = $(sel);
+    if (d.open) return;
+    if (typeof d.showModal === "function") { try { d.showModal(); return; } catch (e) { /* sigue */ } }
+    d.setAttribute("open", "");
+  }
+  function cerrarDlg(sel) { var d = $(sel); if (typeof d.close === "function") d.close(); else d.removeAttribute("open"); }
+  function aviso(titulo, texto) { $("#t-aviso").textContent = titulo; $("#aviso-txt").textContent = texto; abrirDlg("#dlg-aviso"); }
+  var toastT;
+  function toast(txt) { var t = $("#toast"); t.textContent = txt; t.classList.add("ver"); clearTimeout(toastT); toastT = setTimeout(function () { t.classList.remove("ver"); }, 3200); }
+
+  // ---- Enlaces de reglas y datos ----
+  function pintarTextosFijos() {
+    $$(".enlace-resena").forEach(function (a) { a.href = CONFIG.resenaUrl; });
+    $("#enlace-mapa").href = CONFIG.mapaUrl;
+    $("#dato-direccion").textContent = CONFIG.direccion;
+    $("#dato-horario").textContent = CONFIG.horario;
+    $$(".premio-nombre").forEach(function (e) { e.textContent = CONFIG.premio; });
+    $$(".meta-n").forEach(function (e) { e.textContent = CONFIG.meta; });
+    $$(".monto-sello").forEach(function (e) { e.textContent = dinero(CONFIG.montoPorSello); });
+    $("#reglas-texto").textContent = "1 sello por cada " + dinero(CONFIG.montoPorSello) + " en carne dentro de una misma compra. Al juntar " + CONFIG.meta + " sellos te regalamos " + CONFIG.premio + ". El premio se canjea en el local y no se cambia por dinero. Cada código QR se registra una sola vez.";
+    var rc = $("#reglas-caja"); rc.innerHTML = "";
+    [["Cada sello", dinero(CONFIG.montoPorSello) + " en carne"], ["Premio al juntar", CONFIG.meta + " sellos"], ["Premio", CONFIG.premio]].forEach(function (r) {
+      var li = document.createElement("li"); var b = document.createElement("b"); b.textContent = r[0] + ": "; li.appendChild(b); li.appendChild(document.createTextNode(r[1])); rc.appendChild(li);
+    });
+    $("#aviso-prueba").hidden = !EN_CLAUDE;
+    $("#aviso-guardado").hidden = almacenOK;
+  }
+
+  // ---- Lectura del enlace (#s…, #p-…, #b-…, #caja) ----
+  var ultimoHash = "";
+  function procesarHash() {
+    var h = location.hash || "";
+    if (!h || h === "#" || h === ultimoHash) return;
+    ultimoHash = h;
+    // Quitar el código de la dirección; si se pudo, el mismo enlace puede volver a leerse después
+    try { history.replaceState(null, "", location.pathname + location.search); if (!location.hash) ultimoHash = ""; } catch (e) { /* nada */ }
+    var txt; try { txt = decodeURIComponent(h.slice(1)); } catch (e) { txt = h.slice(1); }
+    txt = txt.trim();
+    var bajo = txt.toLowerCase();
+    if (bajo === "caja") { irA("caja"); return; }
+    if (/^s\d/.test(bajo)) { recibirCodigo(txt.slice(1).toUpperCase()); return; }
+    if (bajo.indexOf("p-") === 0) { mostrarCanje(txt.slice(2).toUpperCase()); return; }
+    if (bajo.indexOf("b-") === 0) { importarRespaldo(txt.slice(2).toUpperCase()); return; }
+  }
+
+  // =================== Eventos ===================
+  function conectar() {
+    $$("[data-ir]").forEach(function (b) { b.addEventListener("click", function () { irA(b.getAttribute("data-ir")); }); });
+    $$("[data-cerrar]").forEach(function (b) { b.addEventListener("click", function () { var d = b.closest("dialog"); if (d) cerrarDlg("#" + d.id); }); });
+    $("#franja-raspa-btn").addEventListener("click", function () { var p = porRaspar(); if (p.length) abrirRaspa(p[0]); });
+    $("#gracias-cerrar").addEventListener("click", function () { $("#gracias").hidden = true; });
+
+    lienzo = $("#raspa-lienzo");
+    lienzo.addEventListener("pointerdown", function (ev) { if (destapado) return; rascando = true; ultimo = null; try { lienzo.setPointerCapture(ev.pointerId); } catch (e) { /* nada */ } rascar(posEn(ev)); ev.preventDefault(); });
+    lienzo.addEventListener("pointermove", function (ev) { if (!rascando || destapado) return; rascar(posEn(ev)); ev.preventDefault(); });
+    ["pointerup", "pointercancel", "pointerleave"].forEach(function (t) { lienzo.addEventListener(t, function () { rascando = false; ultimo = null; if (!destapado && trazos > 3 && proporcionRaspada() > 0.5) destapar(); }); });
+    $("#raspa-destapar").addEventListener("click", destapar);
+    $("#raspa-guardar").addEventListener("click", guardarRaspa);
+    $("#dlg-raspa").addEventListener("close", function () { pintarFranja(); });
+    $("#gano-ver").addEventListener("click", function () {
+      cerrarDlg("#dlg-gano");
+      pintarTarjeta(null, 0);
+      var pend = tarjeta.premios.filter(function (p) { return p.estado === "pendiente"; });
+      var sec = $("#sec-premios"); if (sec && !sec.hidden) sec.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (pend.length) setTimeout(function () { toast("Tu premio está en Mis premios"); }, 300);
+    });
+    $("#dlg-gano").addEventListener("cancel", function () { pintarTarjeta(null, 0); });
+
+    $("#premio-recibido").addEventListener("click", function () {
+      if (!premioAbierto) return;
+      if (!confirmarRecibido) { confirmarRecibido = true; $("#premio-recibido").textContent = "Toca otra vez para confirmar"; return; }
+      marcarEntregado(premioAbierto); cerrarDlg("#dlg-premio"); toast("Premio marcado como entregado. ¡Buen provecho!");
+    });
+    $("#premio-verificar").addEventListener("click", function () { if (!premioAbierto) return; var c = cargaPremio(premioAbierto); cerrarDlg("#dlg-premio"); mostrarCanje(c); });
+
+    // Caja
+    $("#caja-login").addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var a = $("#clave1").value.trim().toLowerCase(), b = $("#clave2").value.trim().toLowerCase(), err = $("#login-error");
+      err.hidden = true;
+      if (!window.crypto || !crypto.subtle) { err.textContent = "Este navegador no permite abrir la caja. Usa Chrome o Safari actualizados."; err.hidden = false; return; }
+      if (a.length < 8) { err.textContent = "La clave debe tener al menos 8 caracteres."; err.hidden = false; return; }
+      if (a !== b) { err.textContent = "Las dos claves no coinciden. Escríbelas otra vez."; err.hidden = false; return; }
+      var btn = $("#login-btn"); btn.disabled = true; btn.textContent = "Abriendo…";
+      abrirCaja(a).then(function () {
+        $("#clave1").value = ""; $("#clave2").value = "";
+        btn.disabled = false; btn.textContent = "Abrir caja";
+        if (canjePendiente) { var c = canjePendiente; canjePendiente = null; mostrarCanje(c); return; }
+        pintarCaja(); elegirTab("venta"); toast("Caja abierta. Huella de la clave: " + huella);
+      }).catch(function () { btn.disabled = false; btn.textContent = "Abrir caja"; err.textContent = "No se pudo abrir la caja en este navegador."; err.hidden = false; });
+    });
+    $$(".tabs [role=tab]").forEach(function (b) { b.addEventListener("click", function () { elegirTab(b.getAttribute("data-tab")); }); });
+    $("#monto").addEventListener("input", function () { var v = this.value.replace(/\D/g, "").slice(0, 6); if (v !== this.value) this.value = v; actualizarCalculo(); });
+    $$("[data-suma]").forEach(function (b) {
+      b.addEventListener("click", function () { var s = +b.getAttribute("data-suma"); $("#monto").value = s ? String(montoActual() + s) : ""; actualizarCalculo(); });
+    });
+    $("#venta-form").addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var m = montoActual(); if (m < CONFIG.montoPorSello || !claveHmac) return;
+      var err = $("#venta-error"); err.hidden = true;
+      if (m > 60000) { err.textContent = "Revisa el monto: parece demasiado alto."; err.hidden = false; return; }
+      $("#venta-generar").disabled = true;
+      emitir(m).then(function (cod) { mostrarQRVenta(cod, m); $("#venta-generar").disabled = false; })
+        .catch(function () { err.textContent = "No se pudo generar el código. Intenta otra vez."; err.hidden = false; $("#venta-generar").disabled = false; });
+    });
+    $("#venta-nueva").addEventListener("click", nuevaVenta);
+    $("#venta-probar").addEventListener("click", function () { if (ultimoEmitido) recibirCodigo(ultimoEmitido.str); });
+    $("#canje-manual-btn").addEventListener("click", function () { var v = $("#canje-manual").value.trim(); if (v) mostrarCanje(v.toUpperCase()); });
+    $("#canje-entregar").addEventListener("click", entregarPremio);
+    var confirmarCierre = false;
+    $("#cerrar-caja").addEventListener("click", function () {
+      if (!confirmarCierre) { confirmarCierre = true; this.textContent = "Toca otra vez para cerrar"; return; }
+      confirmarCierre = false; this.textContent = "Cerrar caja en este celular";
+      borrar(K_CLAVE); claveHmac = null; huella = ""; pintarCaja(); toast("Caja cerrada en este celular");
+    });
+    window.addEventListener("hashchange", procesarHash);
+  }
+
+  // =================== Inicio ===================
+  pintarTextosFijos();
+  conectar();
+  pintarCliente();
+  actualizarCalculo();
+  cargarClave().then(function () {
+    if (document.fonts && document.fonts.load) {
+      var t = setTimeout(procesarHash, 1200);
+      document.fonts.load('28px "Alfa Slab One"').then(function () { clearTimeout(t); procesarHash(); }, function () { clearTimeout(t); procesarHash(); });
+    } else procesarHash();
+  });
+})();
+</script>
+</body>
+</html>
