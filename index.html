@@ -104,13 +104,16 @@ button { font: inherit; color: inherit; }
 .liston { display: flex; justify-content: center; margin-top: -4px; }
 .liston span { background: var(--guinda); color: var(--crema); font: 700 11px/1 var(--f-texto); letter-spacing: 0.14em; text-transform: uppercase; padding: 7px 20px; clip-path: polygon(0 0, 100% 0, calc(100% - 9px) 50%, 100% 100%, 0 100%, 9px 50%); }
 
-.sellos { list-style: none; margin: 4px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.sellos { list-style: none; margin: 4px auto 0; padding: 0; display: grid; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); gap: 10px; width: 100%; max-width: 372px; }
 .sello { aspect-ratio: 1; max-width: 100%; border-radius: 50%; display: grid; place-items: center; position: relative; border: 2px dashed rgba(59, 36, 22, 0.32); }
-.sello .num { font: 700 15px/1 var(--f-mono); color: rgba(59, 36, 22, 0.4); }
+.sello .num { font: 700 17px/1 var(--f-mono); color: rgba(59, 36, 22, 0.4); }
 .sello.meta { border-style: solid; border-color: rgba(140, 28, 46, 0.55); background: rgba(140, 28, 46, 0.06); }
+.sello .meta-in { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.sello .meta-in svg { width: 24px; height: 24px; color: var(--guinda); transform: none; opacity: 1; }
 .sello .meta-txt { font: 700 9px/1.1 var(--f-texto); letter-spacing: 0.08em; text-transform: uppercase; color: var(--guinda); text-align: center; }
 .sello.lleno { border-color: transparent; }
 .sello svg { width: 112%; height: 112%; color: var(--guinda); transform: rotate(var(--r, 0deg)); opacity: 0.92; }
+.sello.regalo svg { color: var(--oro-osc); }
 .sello.nuevo svg { animation: estampar 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.25) both; animation-delay: var(--d, 0ms); }
 
 .carton-pie { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-top: 1.5px dashed rgba(59, 36, 22, 0.25); padding-top: 12px; }
@@ -321,6 +324,12 @@ dialog.dlg[open] { display: flex; flex-direction: column; gap: 14px; animation: 
       <ellipse cx="29.5" cy="38.6" rx="1.45" ry="2.2" fill="currentColor"/>
       <ellipse cx="34.5" cy="38.6" rx="1.45" ry="2.2" fill="currentColor"/>
     </symbol>
+    <symbol id="sello-regalo" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="29.5" fill="none" stroke="currentColor" stroke-width="3"/>
+      <circle cx="32" cy="32" r="25" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2.2 2.4"/>
+      <path fill="currentColor" fill-rule="evenodd" d="M32 26c-2.4-8-12.6-9.4-12.6-4.2 0 3.4 4.8 4.2 12.6 4.2Z M28.4 23.4c-1.6-3.4-5.8-4.4-5.8-2 0 1.4 2 2 5.8 2Z M32 26c2.4-8 12.6-9.4 12.6-4.2 0 3.4-4.8 4.2-12.6 4.2Z M35.6 23.4c1.6-3.4 5.8-4.4 5.8-2 0 1.4-2 2-5.8 2Z"/>
+      <path fill="currentColor" d="M17 27.5h12.4v6.2H17z M34.6 27.5H47v6.2H34.6z M19.6 36h9.8v12h-9.8z M34.6 36h9.8v12h-9.8z"/>
+    </symbol>
     <symbol id="regalo" viewBox="0 0 24 24">
       <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M3.5 9.5h17v4h-17z M5 13.5h14V21H5z M12 9.5V21 M12 9.5c-1.6-3.6-6.2-4.4-6.2-1.6 0 1.2 1.3 1.6 6.2 1.6Zm0 0c1.6-3.6 6.2-4.4 6.2-1.6 0 1.2-1.3 1.6-6.2 1.6Z"/>
     </symbol>
@@ -355,10 +364,10 @@ dialog.dlg[open] { display: flex; flex-direction: column; gap: 14px; animation: 
         <div class="liston"><span>Desde 1986 · Tuxtepec, Oax.</span></div>
         <ol class="sellos" id="sellos" aria-label="Sellos de tu tarjeta"></ol>
         <div class="carton-pie">
-          <p class="cuenta" aria-live="polite"><b id="cuenta">0</b><span id="cuenta-de">de 10 sellos</span></p>
-          <p class="faltan" id="faltan">Te faltan $2,000 en carne para tu premio</p>
+          <p class="cuenta" aria-live="polite"><b id="cuenta">2</b><span id="cuenta-de">de 7 sellos</span></p>
+          <p class="faltan" id="faltan">Te faltan $1,000 en carne para tu premio</p>
         </div>
-        <p class="premio-linea"><svg aria-hidden="true"><use href="#regalo"/></svg><span>Al juntar <span class="meta-n">10</span> sellos te regalamos <b class="premio-nombre">$150 de carne + 5 engañadas</b></span></p>
+        <p class="premio-linea"><svg aria-hidden="true"><use href="#regalo"/></svg><span><span class="txt-regalo">Empiezas con <b><span class="regalo-n">2</span> sellos de regalo</b>. </span>Al completar los <span class="meta-n">7</span> te regalamos <b class="premio-nombre">$150 de carne + 5 engañadas</b></span></p>
       </div>
     </section>
 
@@ -388,7 +397,7 @@ dialog.dlg[open] { display: flex; flex-direction: column; gap: 14px; animation: 
       <ol class="pasos">
         <li><div><b>Compra tu carne</b><span>Por cada <span class="monto-sello">$200</span> en carne, en caja te dan un código QR.</span></div></li>
         <li><div><b>Escanéalo y raspa</b><span>Ábrelo con la cámara de tu celular, raspa y tus sellos se guardan aquí.</span></div></li>
-        <li><div><b>Junta <span class="meta-n">10</span> y gana</b><span>Te regalamos <span class="premio-nombre">$150 de carne + 5 engañadas</span>. Lo canjeas cuando quieras.</span></div></li>
+        <li><div><b>Completa los <span class="meta-n">7</span> sellos</b><span><span class="txt-regalo">Tu tarjeta ya trae <span class="regalo-n">2</span> de regalo. </span>Al completarla te regalamos <span class="premio-nombre">$150 de carne + 5 engañadas</span>. Lo canjeas cuando quieras.</span></div></li>
       </ol>
     </section>
 
@@ -567,8 +576,9 @@ dialog.dlg[open] { display: flex; flex-direction: column; gap: 14px; animation: 
 <dialog class="dlg gano" id="dlg-gano" aria-labelledby="t-gano">
   <div class="gano-sello" aria-hidden="true">¡Premio!</div>
   <h2 class="dlg-titulo" id="t-gano" tabindex="-1" autofocus>Completaste tu tarjeta</h2>
-  <p class="gano-premio premio-nombre">$150 de carne + 5 engañadas</p>
-  <p>Lo guardamos en <b>Mis premios</b>. Muéstralo en caja cuando quieras canjearlo.</p>
+  <p class="gano-premio premio-nombre" id="gano-premio">$150 de carne + 5 engañadas</p>
+  <p id="gano-nota" hidden></p>
+  <p id="gano-guardado">Lo guardamos en <b>Mis premios</b>. Muéstralo en caja cuando quieras canjearlo.</p>
   <button class="btn btn-primario" id="gano-ver" style="align-self:stretch">Ver mi premio</button>
 </dialog>
 
@@ -767,7 +777,8 @@ function qrSVG(text, dark, light) {
   // ---- Reglas del programa (cambiarlas aquí) ----
   var CONFIG = {
     montoPorSello: 200,
-    meta: 10,
+    casillas: 7, // sellos que tiene la tarjeta
+    regalo: 2, // sellos de regalo con los que empieza cada tarjeta
     premio: "$150 de carne + 5 engañadas",
     resenaUrl: "https://search.google.com/local/writereview?placeid=ChIJhwcxu_Xmw4UR0Lg2N6_nHCc",
     mapaUrl: "https://www.google.com/maps/search/?api=1&query=Carnitas%20Michoacanas%20El%20Saur%C3%ADn%20Tuxtepec&query_place_id=ChIJhwcxu_Xmw4UR0Lg2N6_nHCc",
@@ -784,6 +795,10 @@ function qrSVG(text, dark, light) {
   var te = new TextEncoder();
   var EN_CLAUDE = !!(window.claude && typeof window.claude.use === "function") || /claude/i.test(location.hostname);
   var SELLO = '<svg viewBox="0 0 64 64" aria-hidden="true"><g filter="url(#tinta)"><use href="#cerdo"/></g></svg>';
+  var SELLO_REGALO = '<svg viewBox="0 0 64 64" aria-hidden="true"><g filter="url(#tinta)"><use href="#sello-regalo"/></g></svg>';
+  var CELDA_PREMIO = '<span class="meta-in"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#regalo"/></svg><span class="meta-txt">Premio</span></span>';
+  var POR_COMPRAR = CONFIG.casillas - CONFIG.regalo; // sellos de compra que completan una tarjeta
+  var REGLAS = 2; // versión de las reglas (1 = tarjeta de 10 sellos sin regalo)
 
   function $(s) { return document.querySelector(s); }
   function $$(s) { return Array.prototype.slice.call(document.querySelectorAll(s)); }
@@ -831,22 +846,31 @@ function qrSVG(text, dark, light) {
 
   // =================== Tarjeta del cliente ===================
   var K_TARJETA = "saurin.tarjeta.v1";
-  var tarjeta = leer(K_TARJETA, null);
+  var tarjeta = leer(K_TARJETA, null), tarjetaNueva = false, reglasCambiaron = false;
   if (!tarjeta || tarjeta.v !== 1 || typeof tarjeta.codigos !== "object") {
-    tarjeta = { v: 1, id: aleatorio(4), creada: Date.now(), codigos: {}, premios: [] };
+    tarjeta = { v: 1, reglas: REGLAS, id: aleatorio(4), creada: Date.now(), codigos: {}, premios: [] };
+    tarjetaNueva = true;
+    guardar(K_TARJETA, tarjeta);
+  } else if (tarjeta.reglas !== REGLAS) {
+    // Tarjeta que venía de las reglas anteriores: conserva sus sellos y sus premios
+    reglasCambiaron = Object.keys(tarjeta.codigos).length > 0;
+    tarjetaNueva = !reglasCambiaron;
+    tarjeta.reglas = REGLAS;
     guardar(K_TARJETA, tarjeta);
   }
   function guardarTarjeta() { guardar(K_TARJETA, tarjeta); }
+  // Sellos ganados con compras que todavía no forman parte de un premio (los de regalo no cuentan aquí)
   function sellosActuales() {
     var s = 0; Object.keys(tarjeta.codigos).forEach(function (dn) { var c = tarjeta.codigos[dn]; if (c.revelado) s += c.rest; }); return s;
   }
+  function sellosEnTarjeta() { return CONFIG.regalo + Math.min(sellosActuales(), POR_COMPRAR); }
   function porRaspar() { return Object.keys(tarjeta.codigos).filter(function (dn) { return !tarjeta.codigos[dn].revelado; }); }
   function formarPremios() {
     var nuevos = 0;
-    while (sellosActuales() >= CONFIG.meta) {
+    while (sellosActuales() >= POR_COMPRAR) {
       var lista = Object.keys(tarjeta.codigos).filter(function (dn) { var c = tarjeta.codigos[dn]; return c.revelado && c.rest > 0; })
         .sort(function (a, b) { return (tarjeta.codigos[a].t - tarjeta.codigos[b].t) || (a < b ? -1 : 1); });
-      var falta = CONFIG.meta, items = [];
+      var falta = POR_COMPRAR, items = [];
       for (var i = 0; i < lista.length && falta > 0; i++) {
         var c = tarjeta.codigos[lista[i]], k = Math.min(c.rest, falta);
         c.rest -= k; falta -= k; items.push([c.n + "-" + lista[i] + "-" + c.mac, k]);
@@ -859,28 +883,35 @@ function qrSVG(text, dark, light) {
   }
   function cargaPremio(p) { return p.items.map(function (it) { return it[0] + "~" + it[1]; }).join("."); }
 
-  function pintarTarjeta(total, desde) {
-    if (total == null) total = sellosActuales();
-    var ol = $("#sellos"); ol.textContent = "";
-    for (var i = 0; i < CONFIG.meta; i++) {
-      var li = document.createElement("li"), lleno = i < total;
-      li.className = "sello" + (lleno ? " lleno" : "") + (i === CONFIG.meta - 1 ? " meta" : "");
+  // comprados: sellos de compra a mostrar (por defecto, los actuales). desde: casilla a partir de la cual se anima el sello.
+  function pintarTarjeta(comprados, desde) {
+    if (comprados == null) comprados = sellosActuales();
+    comprados = Math.min(comprados, POR_COMPRAR);
+    var llenos = CONFIG.regalo + comprados, ol = $("#sellos");
+    // Con 7 sellos se acomodan en 4 columnas y la octava celda marca el premio
+    var cols = (CONFIG.casillas + 1) % 4 === 0 ? 4 : 5, celdaPremio = (CONFIG.casillas + 1) % cols === 0;
+    ol.textContent = ""; ol.style.setProperty("--cols", cols);
+    for (var i = 0; i < CONFIG.casillas; i++) {
+      var li = document.createElement("li"), lleno = i < llenos, deRegalo = i < CONFIG.regalo, ultima = !celdaPremio && i === CONFIG.casillas - 1;
+      li.className = "sello" + (lleno ? " lleno" : "") + (deRegalo ? " regalo" : "") + (ultima ? " meta" : "");
       li.style.setProperty("--r", ROT[i % ROT.length] + "deg");
       if (lleno) {
-        li.innerHTML = SELLO;
+        li.innerHTML = deRegalo ? SELLO_REGALO : SELLO;
         if (desde != null && i >= desde) { li.classList.add("nuevo"); li.style.setProperty("--d", (i - desde) * 170 + "ms"); }
-      } else if (i === CONFIG.meta - 1) {
-        li.innerHTML = '<span class="meta-txt">Premio</span>';
       } else {
-        li.innerHTML = '<span class="num">' + (i + 1) + "</span>";
+        li.innerHTML = ultima ? CELDA_PREMIO : '<span class="num">' + (i + 1) + "</span>";
       }
-      li.setAttribute("aria-label", "Sello " + (i + 1) + (lleno ? ": marcado" : ": vacío"));
+      li.setAttribute("aria-label", "Sello " + (i + 1) + (deRegalo ? ": de regalo" : lleno ? ": marcado" : ": vacío"));
       ol.appendChild(li);
     }
-    $("#cuenta").textContent = total;
-    $("#cuenta-de").textContent = "de " + CONFIG.meta + " sellos";
-    var faltan = Math.max(0, CONFIG.meta - total) * CONFIG.montoPorSello;
-    $("#faltan").textContent = total >= CONFIG.meta ? "¡Tarjeta completa!" : total === 0 ? "Empieza con tu próxima compra de carne" : "Te faltan " + dinero(faltan) + " en carne para tu premio";
+    if (celdaPremio) {
+      var fin = document.createElement("li"); fin.className = "sello meta"; fin.innerHTML = CELDA_PREMIO;
+      fin.setAttribute("aria-label", "Premio al completar la tarjeta"); ol.appendChild(fin);
+    }
+    $("#cuenta").textContent = llenos;
+    $("#cuenta-de").textContent = "de " + CONFIG.casillas + " sellos";
+    var faltan = (POR_COMPRAR - comprados) * CONFIG.montoPorSello;
+    $("#faltan").textContent = comprados >= POR_COMPRAR ? "¡Tarjeta completa!" : "Te faltan " + dinero(faltan) + " en carne para tu premio";
     if (desde != null) { var cart = $("#carton"); cart.classList.remove("golpe"); void cart.offsetWidth; cart.classList.add("golpe"); }
   }
   function pintarPremios() {
@@ -992,19 +1023,42 @@ function qrSVG(text, dark, light) {
   }
   function guardarRaspa() {
     var c = tarjeta.codigos[raspaDn]; if (!c) { cerrarDlg("#dlg-raspa"); return; }
-    var antes = sellosActuales();
+    var antes = Math.min(sellosActuales(), POR_COMPRAR);
     c.revelado = true; guardarTarjeta();
     cerrarDlg("#dlg-raspa");
     var premios = formarPremios();
     if (premios) {
-      pintarTarjeta(CONFIG.meta, antes);
-      setTimeout(function () { abrirDlg("#dlg-gano"); }, 650 + (CONFIG.meta - antes) * 170);
+      pintarTarjeta(POR_COMPRAR, CONFIG.regalo + antes);
+      setTimeout(function () { festejar(premios); }, 650 + (POR_COMPRAR - antes) * 170);
     } else {
-      pintarTarjeta(null, antes);
-      toast("¡+" + c.n + (c.n === 1 ? " sello!" : " sellos!") + " Llevas " + sellosActuales() + " de " + CONFIG.meta);
+      pintarTarjeta(null, CONFIG.regalo + antes);
+      toast("¡+" + c.n + (c.n === 1 ? " sello!" : " sellos!") + " Llevas " + sellosEnTarjeta() + " de " + CONFIG.casillas);
     }
     pintarPremios(); pintarFranja(); pintarRespaldo();
     $("#gracias").hidden = false;
+  }
+  // Festejo al completar la tarjeta (n = premios ganados de una vez)
+  function festejar(n, nota) {
+    $("#t-gano").textContent = n === 1 ? "Completaste tu tarjeta" : "Completaste tu tarjeta " + n + " veces";
+    $("#gano-premio").textContent = n === 1 ? CONFIG.premio : n + " premios de " + CONFIG.premio;
+    $("#gano-nota").hidden = !nota; $("#gano-nota").textContent = nota || "";
+    $("#gano-guardado").innerHTML = n === 1 ? "Lo guardamos en <b>Mis premios</b>. Muéstralo en caja cuando quieras canjearlo." : "Los guardamos en <b>Mis premios</b>. Muéstralos en caja cuando quieras canjearlos.";
+    $("#gano-ver").textContent = n === 1 ? "Ver mi premio" : "Ver mis premios";
+    abrirDlg("#dlg-gano");
+  }
+  // Al abrir la página: premio si los sellos guardados ya alcanzan, aviso de reglas nuevas o los sellos de regalo
+  function bienvenida() {
+    if (vistaActual !== "cliente" || document.querySelector("dialog[open]")) return;
+    var n = formarPremios();
+    if (n) {
+      pintarPremios(); pintarRespaldo(); pintarTarjeta(POR_COMPRAR);
+      festejar(n, reglasCambiaron ? "La tarjeta ahora se completa con " + CONFIG.casillas + " sellos y trae " + CONFIG.regalo + " de regalo. Con los sellos que ya tenías, alcanzaste premio." : "");
+    } else if (reglasCambiaron) {
+      aviso("Tu tarjeta ahora es más fácil de completar", "Ahora se completa con " + CONFIG.casillas + " sellos y ya trae " + CONFIG.regalo + " de regalo. Los sellos que tenías se conservan.");
+    } else if (tarjetaNueva && CONFIG.regalo) {
+      pintarTarjeta(null, 0);
+      toast("Te regalamos " + CONFIG.regalo + " sellos para empezar tu tarjeta");
+    }
   }
 
   // ---- Premios ----
@@ -1039,8 +1093,8 @@ function qrSVG(text, dark, light) {
       items.forEach(function (i) { if (!tarjeta.codigos[i.c.dn]) tarjeta.codigos[i.c.dn] = { n: i.c.n, mac: i.c.mac, t: Date.now(), rest: 0, revelado: true }; });
       premios++;
     });
-    guardarTarjeta(); formarPremios(); pintarCliente();
-    if (sellos || premios) aviso("Tarjeta recuperada", "Agregamos " + sellos + (sellos === 1 ? " sello" : " sellos") + (premios ? " y " + premios + (premios === 1 ? " premio" : " premios") : "") + " a este celular.");
+    guardarTarjeta(); var ganados = formarPremios(); pintarCliente();
+    if (sellos || premios) aviso("Tarjeta recuperada", "Agregamos " + sellos + (sellos === 1 ? " sello" : " sellos") + (premios ? " y " + premios + (premios === 1 ? " premio" : " premios") : "") + " a este celular." + (ganados ? " Con esos sellos completaste " + (ganados === 1 ? "una tarjeta" : ganados + " tarjetas") + ": revisa Mis premios." : ""));
     else aviso("Tu tarjeta ya estaba aquí", "Todo lo de ese respaldo ya está guardado en este celular.");
   }
 
@@ -1105,7 +1159,7 @@ function qrSVG(text, dark, light) {
       });
     }, Promise.resolve()).then(function () {
       var total = res.reduce(function (s, r) { return s + (r.ok ? r.k : 0); }, 0);
-      return { res: res, total: total, valido: res.length > 0 && res.every(function (r) { return r.ok; }) && total >= CONFIG.meta };
+      return { res: res, total: total, valido: res.length > 0 && res.every(function (r) { return r.ok; }) && total >= POR_COMPRAR };
     });
   }
 
@@ -1189,7 +1243,7 @@ function qrSVG(text, dark, light) {
       else {
         b.textContent = "No se puede entregar";
         var malos = r.res.filter(function (x) { return !x.ok; });
-        s.textContent = malos.length ? malos[0].motivo + "." : "La tarjeta tiene " + r.total + " de " + CONFIG.meta + " sellos.";
+        s.textContent = malos.length ? malos[0].motivo + "." : "Faltan sellos de compra: trae " + r.total + " de " + POR_COMPRAR + ".";
       }
       ver.appendChild(b); ver.appendChild(s);
       var ul = $("#canje-lista");
@@ -1254,11 +1308,13 @@ function qrSVG(text, dark, light) {
     $("#dato-direccion").textContent = CONFIG.direccion;
     $("#dato-horario").textContent = CONFIG.horario;
     $$(".premio-nombre").forEach(function (e) { e.textContent = CONFIG.premio; });
-    $$(".meta-n").forEach(function (e) { e.textContent = CONFIG.meta; });
+    $$(".meta-n").forEach(function (e) { e.textContent = CONFIG.casillas; });
+    $$(".regalo-n").forEach(function (e) { e.textContent = CONFIG.regalo; });
+    $$(".txt-regalo").forEach(function (e) { e.hidden = !CONFIG.regalo; });
     $$(".monto-sello").forEach(function (e) { e.textContent = dinero(CONFIG.montoPorSello); });
-    $("#reglas-texto").textContent = "1 sello por cada " + dinero(CONFIG.montoPorSello) + " en carne dentro de una misma compra. Al juntar " + CONFIG.meta + " sellos te regalamos " + CONFIG.premio + ". El premio se canjea en el local y no se cambia por dinero. Cada código QR se registra una sola vez.";
+    $("#reglas-texto").textContent = "La tarjeta tiene " + CONFIG.casillas + " sellos" + (CONFIG.regalo ? " y empieza con " + CONFIG.regalo + " de regalo" : "") + ". Ganas 1 sello por cada " + dinero(CONFIG.montoPorSello) + " en carne dentro de una misma compra. Al completarla te regalamos " + CONFIG.premio + " y empiezas una tarjeta nueva. El premio se canjea en el local y no se cambia por dinero. Cada código QR se registra una sola vez.";
     var rc = $("#reglas-caja"); rc.innerHTML = "";
-    [["Cada sello", dinero(CONFIG.montoPorSello) + " en carne"], ["Premio al juntar", CONFIG.meta + " sellos"], ["Premio", CONFIG.premio]].forEach(function (r) {
+    [["Cada sello", dinero(CONFIG.montoPorSello) + " en carne"], ["Tarjeta", CONFIG.casillas + " sellos: " + CONFIG.regalo + " de regalo y " + POR_COMPRAR + " de compra (" + dinero(POR_COMPRAR * CONFIG.montoPorSello) + " en carne)"], ["Premio", CONFIG.premio]].forEach(function (r) {
       var li = document.createElement("li"); var b = document.createElement("b"); b.textContent = r[0] + ": "; li.appendChild(b); li.appendChild(document.createTextNode(r[1])); rc.appendChild(li);
     });
     $("#aviso-prueba").hidden = !EN_CLAUDE;
@@ -1301,7 +1357,7 @@ function qrSVG(text, dark, light) {
       pintarTarjeta(null, 0);
       var pend = tarjeta.premios.filter(function (p) { return p.estado === "pendiente"; });
       var sec = $("#sec-premios"); if (sec && !sec.hidden) sec.scrollIntoView({ behavior: "smooth", block: "start" });
-      if (pend.length) setTimeout(function () { toast("Tu premio está en Mis premios"); }, 300);
+      if (pend.length) setTimeout(function () { toast(pend.length === 1 ? "Tu premio está en Mis premios" : "Tus premios están en Mis premios"); }, 300);
     });
     $("#dlg-gano").addEventListener("cancel", function () { pintarTarjeta(null, 0); });
 
@@ -1361,10 +1417,12 @@ function qrSVG(text, dark, light) {
   pintarCliente();
   actualizarCalculo();
   cargarClave().then(function () {
+    var arrancado = false;
+    function arrancar() { if (arrancado) return; arrancado = true; procesarHash(); bienvenida(); }
     if (document.fonts && document.fonts.load) {
-      var t = setTimeout(procesarHash, 1200);
-      document.fonts.load('28px "Alfa Slab One"').then(function () { clearTimeout(t); procesarHash(); }, function () { clearTimeout(t); procesarHash(); });
-    } else procesarHash();
+      var t = setTimeout(arrancar, 1200);
+      document.fonts.load('28px "Alfa Slab One"').then(function () { clearTimeout(t); arrancar(); }, function () { clearTimeout(t); arrancar(); });
+    } else arrancar();
   });
 })();
 </script>
