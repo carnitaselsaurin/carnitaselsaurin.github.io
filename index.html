@@ -6,37 +6,38 @@
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Tarjeta El Saurín</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Tarjeta de cliente frecuente de Carnitas Michoacanas El Saurín: junta sellos con tus compras de carne y gana premios.">
-<meta name="theme-color" content="#24160e">
+<meta name="description" content="Tarjeta de cliente frecuente de Carnitas El Saurín: junta sellos con tus compras de carne y gana premios.">
+<meta name="theme-color" content="#22140a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Courier+Prime:wght@400;700&family=Libre+Franklin:wght@400;500;600;700&display=swap">
 <style>
 /* Layout: una sola columna del ancho de un celular. La tarjeta de cartulina con cuerda trenzada
    es la protagonista; todo lo demás (premios, reseña, caja) vive debajo, sobre fondo café tostado.
-   Diseño de un solo tema (oscuro) a propósito: los colores del Saurín no cambian con el sistema. */
+   Diseño de un solo tema (oscuro) a propósito: los colores del Saurín no cambian con el sistema.
+   Los colores salen del logo: crema del fondo, café de las líneas, ocre de la cuerda y rojo del listón. */
 :root {
-  --fondo: #24160e;
-  --fondo-2: #2f1d12;
-  --fondo-3: #3f2819;
-  --linea: rgba(244, 231, 207, 0.16);
-  --crema: #f4e7cf;
-  --crema-2: #e8d4b0;
-  --papel: #fffaf1;
-  --tinta: #3b2416;
-  --tinta-2: #6f5340;
-  --guinda: #8c1c2e;
-  --guinda-2: #a52a3d;
-  --guinda-osc: #66121f;
-  --oro: #c99a3e;
-  --oro-claro: #e6c47a;
-  --oro-osc: #8f6420;
-  --texto: #f4e7cf;
-  --texto-2: #cdb898;
+  --fondo: #22140a;
+  --fondo-2: #2d1b0f;
+  --fondo-3: #3c2616;
+  --linea: rgba(231, 220, 192, 0.16);
+  --crema: #e7dcc0;
+  --crema-2: #d3c4a1;
+  --papel: #f4ecd8;
+  --tinta: #47290f;
+  --tinta-2: #6e563b;
+  --guinda: #7f392c;
+  --guinda-2: #a05240;
+  --guinda-osc: #5b241a;
+  --oro: #b0834f;
+  --oro-claro: #d5b183;
+  --oro-osc: #80582f;
+  --texto: #efe4c9;
+  --texto-2: #c8b592;
   --ok: #2f6f45;
-  --ok-fondo: #dfeedb;
-  --mal: #9f2419;
-  --mal-fondo: #f7ddd6;
+  --ok-fondo: #dde8d0;
+  --mal: #9c2b17;
+  --mal-fondo: #f2dbc6;
   --f-display: "Alfa Slab One", Rockwell, "Roboto Slab", Georgia, serif;
   --f-texto: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
   --f-mono: "Courier Prime", "Courier New", Courier, monospace;
@@ -46,7 +47,7 @@
 html, body { min-height: 100%; }
 body {
   background-color: var(--fondo);
-  background-image: radial-gradient(120% 55% at 50% -12%, rgba(201, 154, 62, 0.2), transparent 62%);
+  background-image: radial-gradient(120% 55% at 50% -12%, rgba(176, 131, 79, 0.24), transparent 62%);
   color: var(--texto);
   font: 400 16px/1.5 var(--f-texto);
   padding-left: max(16px, env(safe-area-inset-left, 0px));
@@ -65,8 +66,7 @@ button { font: inherit; color: inherit; }
 
 /* ---------- Encabezado ---------- */
 .marca { display: flex; align-items: center; gap: 12px; }
-.marca-insignia { width: 46px; height: 46px; flex: none; border-radius: 50%; background: var(--guinda); color: var(--crema); display: grid; place-items: center; box-shadow: 0 0 0 2px var(--fondo), 0 0 0 3.5px var(--oro); }
-.marca-insignia svg { width: 36px; height: 36px; }
+.marca-insignia { width: 46px; height: 46px; flex: none; border-radius: 50%; display: block; box-shadow: 0 0 0 2px var(--fondo), 0 0 0 3.5px var(--oro); }
 .marca-txt { display: flex; flex-direction: column; min-width: 0; }
 .marca-sup { font: 600 11px/1.2 var(--f-texto); letter-spacing: 0.16em; text-transform: uppercase; color: var(--oro-claro); }
 .marca-nombre { font: 24px/1.1 var(--f-display); color: var(--crema); letter-spacing: 0.01em; }
@@ -87,11 +87,11 @@ button { font: inherit; color: inherit; }
   position: relative;
   border-radius: 20px;
   background-color: var(--crema);
-  background-image: radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.6), transparent 46%), radial-gradient(rgba(59, 36, 22, 0.07) 0.8px, transparent 1.1px);
+  background-image: radial-gradient(circle at 16% 8%, rgba(255, 255, 255, 0.34), transparent 42%), radial-gradient(rgba(71, 41, 15, 0.06) 0.8px, transparent 1.1px);
   background-size: auto, 5px 5px;
   color: var(--tinta);
   padding: 20px 18px 18px;
-  box-shadow: inset 0 0 0 5px var(--crema), inset 0 0 0 6.5px rgba(140, 28, 46, 0.45);
+  box-shadow: inset 0 0 0 5px var(--crema), inset 0 0 0 6.5px rgba(93, 58, 28, 0.4);
   display: flex; flex-direction: column; gap: 14px;
   color-scheme: light;
 }
@@ -100,20 +100,51 @@ button { font: inherit; color: inherit; }
 .carton-eyebrow { font: 700 11px/1.2 var(--f-texto); letter-spacing: 0.16em; text-transform: uppercase; color: var(--tinta-2); }
 .carton-folio { font: 400 12px/1 var(--f-mono); color: var(--tinta-2); white-space: nowrap; }
 .carton-folio b { font-weight: 700; color: var(--guinda); letter-spacing: 0.06em; }
-.carton-nombre { font: clamp(38px, 11vw, 48px)/0.95 var(--f-display); color: var(--guinda); text-align: center; letter-spacing: 0.01em; margin-top: 2px; }
-.liston { display: flex; justify-content: center; margin-top: -4px; }
-.liston span { background: var(--guinda); color: var(--crema); font: 700 11px/1 var(--f-texto); letter-spacing: 0.14em; text-transform: uppercase; padding: 7px 20px; clip-path: polygon(0 0, 100% 0, calc(100% - 9px) 50%, 100% 100%, 0 100%, 9px 50%); }
+.carton-cab { border-top: 1.5px dashed rgba(59, 36, 22, 0.25); padding-top: 12px; }
+
+/* ---------- Logo animado (cada parte del logo es una capa del mismo tamaño) ---------- */
+@property --giro { syntax: "<angle>"; inherits: false; initial-value: 360deg; }
+.logo { position: relative; width: min(80%, 290px); aspect-ratio: 921 / 1070; margin: 0 auto; cursor: pointer; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.logo img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+.logo.espera img { opacity: 0; }
+.logo.anima .c-arco { animation: lg-caer 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.2) both; }
+.logo.anima .c-cuerda { animation: lg-aparecer 0.4s ease both 0.12s; }
+.logo.anima.con-giro .c-cuerda {
+  animation: lg-aparecer 0.25s ease both 0.12s, lg-trenzar 1.15s cubic-bezier(0.45, 0, 0.25, 1) both 0.12s;
+  -webkit-mask-image: conic-gradient(from 68deg at 50% 57%, #000 var(--giro), transparent var(--giro));
+  mask-image: conic-gradient(from 68deg at 50% 57%, #000 var(--giro), transparent var(--giro));
+}
+.logo.anima .c-titulo { animation: lg-pintar 0.75s cubic-bezier(0.6, 0, 0.2, 1) both 0.45s; }
+.logo.anima .c-linea { transform-origin: 50% 41.5%; animation: lg-linea 0.45s ease-out both 1s; }
+.logo.anima .c-lugar { animation: lg-subir 0.45s ease-out both 1.15s; }
+.logo .c-cerdo { transform-origin: 50% 68%; }
+.logo.anima .c-cerdo { animation: lg-asomar 0.65s cubic-bezier(0.2, 0.9, 0.3, 1.3) both 1.3s; }
+.logo.anima .c-liston { transform-origin: 50% 72.5%; animation: lg-liston 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.25) both 1.65s; }
+.logo.anima .c-detalles { transform-origin: 50% 82.6%; animation: lg-brotar 0.35s ease-out both 2.1s; }
+.logo.listo .c-cerdo { animation: lg-saludo 6.5s ease-in-out 2.5s infinite; }
+.logo.listo.toque .c-cerdo { animation: lg-brinco 0.6s cubic-bezier(0.3, 0.8, 0.4, 1.2); }
+@keyframes lg-aparecer { from { opacity: 0; } to { opacity: 1; } }
+@keyframes lg-caer { from { opacity: 0; transform: translateY(-9%); } to { opacity: 1; transform: none; } }
+@keyframes lg-trenzar { 0% { --giro: 0deg; } 88% { --giro: 228deg; } 100% { --giro: 360deg; } }
+@keyframes lg-pintar { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes lg-linea { from { opacity: 0; transform: scaleX(0); } to { opacity: 1; transform: none; } }
+@keyframes lg-subir { from { opacity: 0; transform: translateY(2.2%); } to { opacity: 1; transform: none; } }
+@keyframes lg-asomar { 0% { opacity: 0; transform: translateY(7%) scale(0.86); } 55% { opacity: 1; } 100% { opacity: 1; transform: none; } }
+@keyframes lg-liston { 0% { opacity: 0; transform: scaleX(0.05) rotate(-3deg); } 100% { opacity: 1; transform: none; } }
+@keyframes lg-brotar { from { opacity: 0; transform: scale(0.4); } to { opacity: 1; transform: none; } }
+@keyframes lg-saludo { 0%, 80%, 100% { transform: none; } 85% { transform: translateY(1%) rotate(-2.2deg); } 90% { transform: translateY(0.4%) rotate(2deg); } 95% { transform: translateY(0.8%) rotate(-1deg); } }
+@keyframes lg-brinco { 0% { transform: none; } 30% { transform: translateY(2.4%) scale(1.05, 0.94); } 62% { transform: scale(0.98, 1.04); } 100% { transform: none; } }
 
 .sellos { list-style: none; margin: 4px auto 0; padding: 0; display: grid; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); gap: 10px; width: 100%; max-width: 372px; }
 .sello { aspect-ratio: 1; max-width: 100%; border-radius: 50%; display: grid; place-items: center; position: relative; border: 2px dashed rgba(59, 36, 22, 0.32); }
 .sello .num { font: 700 17px/1 var(--f-mono); color: rgba(59, 36, 22, 0.4); }
-.sello.meta { border-style: solid; border-color: rgba(140, 28, 46, 0.55); background: rgba(140, 28, 46, 0.06); }
+.sello.meta { border-style: solid; border-color: rgba(127, 57, 44, 0.65); background: rgba(93, 58, 28, 0.07); }
 .sello .meta-in { display: flex; flex-direction: column; align-items: center; gap: 3px; }
 .sello .meta-in svg { width: 24px; height: 24px; color: var(--guinda); transform: none; opacity: 1; }
 .sello .meta-txt { font: 700 9px/1.1 var(--f-texto); letter-spacing: 0.08em; text-transform: uppercase; color: var(--guinda); text-align: center; }
 .sello.lleno { border-color: transparent; }
-.sello svg { width: 112%; height: 112%; color: var(--guinda); transform: rotate(var(--r, 0deg)); opacity: 0.92; }
-.sello.regalo svg { color: var(--oro-osc); }
+.sello svg { width: 108%; height: 108%; color: var(--guinda); transform: rotate(var(--r, 0deg)); filter: drop-shadow(0 1.5px 1px rgba(59, 36, 22, 0.28)); }
+.sello.regalo svg { color: var(--oro); }
 .sello.nuevo svg { animation: estampar 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.25) both; animation-delay: var(--d, 0ms); }
 
 .carton-pie { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-top: 1.5px dashed rgba(59, 36, 22, 0.25); padding-top: 12px; }
@@ -121,7 +152,7 @@ button { font: inherit; color: inherit; }
 .cuenta b { font: 34px/1 var(--f-display); color: var(--guinda); font-weight: 400; font-variant-numeric: tabular-nums; }
 .cuenta span { font: 600 14px/1 var(--f-texto); color: var(--tinta-2); }
 .faltan { font-size: 14px; color: var(--tinta); font-weight: 500; text-align: right; flex: 1 1 160px; }
-.premio-linea { display: flex; gap: 10px; align-items: center; background: rgba(140, 28, 46, 0.08); border-radius: 12px; padding: 10px 12px; font-size: 14px; }
+.premio-linea { display: flex; gap: 10px; align-items: center; background: rgba(93, 58, 28, 0.1); border-radius: 12px; padding: 10px 12px; font-size: 14px; }
 .premio-linea svg { width: 26px; height: 26px; flex: none; color: var(--guinda); }
 .premio-linea b { color: var(--guinda); }
 
@@ -216,7 +247,7 @@ button { font: inherit; color: inherit; }
 .monto:focus-within { box-shadow: 0 0 0 3px var(--oro-claro); }
 .atajos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
 .atajos button { appearance: none; border: 1.5px solid rgba(59, 36, 22, 0.3); background: var(--papel); color: var(--tinta); border-radius: 999px; min-height: 40px; padding: 6px 4px; white-space: nowrap; font: 600 14px/1 var(--f-texto); cursor: pointer; font-variant-numeric: tabular-nums; }
-.calc { display: flex; align-items: center; gap: 14px; background: rgba(140, 28, 46, 0.08); border-radius: 14px; padding: 12px 14px; }
+.calc { display: flex; align-items: center; gap: 14px; background: rgba(93, 58, 28, 0.1); border-radius: 14px; padding: 12px 14px; }
 .calc-num { font: 44px/1 var(--f-display); color: var(--guinda); font-variant-numeric: tabular-nums; min-width: 1.2em; text-align: center; }
 .calc-txt { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .calc-txt b { font-weight: 700; }
@@ -283,7 +314,7 @@ dialog.dlg[open] { display: flex; flex-direction: column; gap: 14px; animation: 
 .raspa-num { font: 64px/0.9 var(--f-display); color: var(--guinda); }
 .raspa-premio > span:nth-child(2) { font-weight: 700; font-size: 16px; }
 .raspa-mini { display: flex; gap: 4px; justify-content: center; flex-wrap: wrap; margin-top: 6px; }
-.raspa-mini svg { width: 26px; height: 26px; color: var(--guinda); }
+.raspa-mini svg { width: 28px; height: 28px; color: var(--guinda); }
 .raspa-lienzo { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; cursor: grab; transition: opacity 0.45s ease; }
 .raspa-lienzo.fuera { opacity: 0; pointer-events: none; }
 
@@ -294,41 +325,42 @@ dialog.dlg[open] { display: flex; flex-direction: column; gap: 14px; animation: 
 .toast { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 20px); background: var(--crema); color: var(--tinta); font-weight: 600; font-size: 15px; padding: 12px 18px; border-radius: 12px; box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45); opacity: 0; pointer-events: none; transition: opacity 0.25s ease, transform 0.25s ease; max-width: calc(100vw - 32px); width: max-content; z-index: 20; }
 .toast.ver { opacity: 1; transform: translate(-50%, 0); }
 
-@keyframes estampar { 0% { transform: rotate(calc(var(--r, 0deg) + 25deg)) scale(1.9); opacity: 0; } 60% { opacity: 0.95; } 100% { transform: rotate(var(--r, 0deg)) scale(1); opacity: 0.92; } }
+@keyframes estampar { 0% { transform: rotate(calc(var(--r, 0deg) + 25deg)) scale(1.9); opacity: 0; } 60% { opacity: 1; } 100% { transform: rotate(var(--r, 0deg)) scale(1); opacity: 1; } }
+@keyframes cinta { to { transform: translateX(-50%); } }
+
+/* ---------- Cinta en movimiento y apariciones al deslizar ---------- */
+.cinta { overflow: hidden; border-block: 1px solid var(--linea); padding-block: 11px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); }
+.cinta-pista { display: flex; width: max-content; animation: cinta 30s linear infinite; }
+.cinta-pista span { display: inline-flex; align-items: center; white-space: nowrap; font: 14px/1 var(--f-display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--oro-claro); }
+.cinta-pista span::after { content: ""; width: 7px; height: 7px; margin-inline: 18px; background: var(--guinda-2); transform: rotate(45deg); }
+.anim .revelar { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); transition-delay: var(--rd, 0ms); }
+.anim .revelar.visto { opacity: 1; transform: none; }
 @keyframes estampar-grande { 0% { transform: rotate(-30deg) scale(2.2); opacity: 0; } 100% { transform: rotate(-8deg) scale(1); opacity: 1; } }
 @keyframes golpe { 0%, 100% { transform: translateY(0); } 30% { transform: translateY(3px); } 60% { transform: translateY(-1px); } }
 @keyframes subir { from { transform: translateY(14px); opacity: 0; } to { transform: none; opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-delay: 0ms !important; transition-duration: 0.001ms !important; }
+  .logo img, .cinta-pista { animation: none !important; }
 }
 @media (min-width: 700px) { .app { padding-top: 32px; } }
 </style>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%238c1c2e'/%3E%3Cpath fill='%23f4e7cf' d='M18.6 26.2 16.8 13.6 28 20.4Z M45.4 26.2 47.2 13.6 36 20.4Z'/%3E%3Cpath fill='%23f4e7cf' fill-rule='evenodd' d='M16 34a16 16 0 1 0 32 0a16 16 0 1 0-32 0Z M24.6 38.6a7.4 5.1 0 1 0 14.8 0a7.4 5.1 0 1 0-14.8 0Z M24.3 29.4a1.9 1.9 0 1 0 3.8 0a1.9 1.9 0 1 0-3.8 0Z M35.9 29.4a1.9 1.9 0 1 0 3.8 0a1.9 1.9 0 1 0-3.8 0Z'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="logo/icono-64.png">
+<link rel="apple-touch-icon" href="logo/icono-180.png">
 <meta property="og:title" content="Tarjeta El Saurín">
-<meta property="og:description" content="Junta sellos con tus compras de carne y gana carnitas gratis en Carnitas Michoacanas El Saurín.">
+<meta property="og:description" content="Junta sellos con tus compras de carne y gana carnitas gratis en Carnitas El Saurín.">
 <meta property="og:locale" content="es_MX">
 <meta property="og:url" content="https://carnitaselsaurin.github.io/">
+<meta property="og:image" content="https://carnitaselsaurin.github.io/vista.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <filter id="tinta" x="-10%" y="-10%" width="120%" height="120%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="11" result="ruido"/>
-      <feDisplacementMap in="SourceGraphic" in2="ruido" scale="1.8"/>
-    </filter>
-    <symbol id="cerdo" viewBox="0 0 64 64">
-      <circle cx="32" cy="32" r="29.5" fill="none" stroke="currentColor" stroke-width="3"/>
-      <circle cx="32" cy="32" r="25" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2.2 2.4"/>
-      <path fill="currentColor" d="M18.6 26.2 16.8 13.6 28 20.4Z M45.4 26.2 47.2 13.6 36 20.4Z"/>
-      <path fill="currentColor" fill-rule="evenodd" d="M16 34a16 16 0 1 0 32 0a16 16 0 1 0-32 0Z M24.6 38.6a7.4 5.1 0 1 0 14.8 0a7.4 5.1 0 1 0-14.8 0Z M24.3 29.4a1.9 1.9 0 1 0 3.8 0a1.9 1.9 0 1 0-3.8 0Z M35.9 29.4a1.9 1.9 0 1 0 3.8 0a1.9 1.9 0 1 0-3.8 0Z M26.6 45.6q5.4 3.9 10.8 0q-5.4 2-10.8 0Z"/>
-      <ellipse cx="29.5" cy="38.6" rx="1.45" ry="2.2" fill="currentColor"/>
-      <ellipse cx="34.5" cy="38.6" rx="1.45" ry="2.2" fill="currentColor"/>
-    </symbol>
-    <symbol id="sello-regalo" viewBox="0 0 64 64">
-      <circle cx="32" cy="32" r="29.5" fill="none" stroke="currentColor" stroke-width="3"/>
-      <circle cx="32" cy="32" r="25" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2.2 2.4"/>
-      <path fill="currentColor" fill-rule="evenodd" d="M32 26c-2.4-8-12.6-9.4-12.6-4.2 0 3.4 4.8 4.2 12.6 4.2Z M28.4 23.4c-1.6-3.4-5.8-4.4-5.8-2 0 1.4 2 2 5.8 2Z M32 26c2.4-8 12.6-9.4 12.6-4.2 0 3.4-4.8 4.2-12.6 4.2Z M35.6 23.4c1.6-3.4 5.8-4.4 5.8-2 0 1.4-2 2-5.8 2Z"/>
-      <path fill="currentColor" d="M17 27.5h12.4v6.2H17z M34.6 27.5H47v6.2H34.6z M19.6 36h9.8v12h-9.8z M34.6 36h9.8v12h-9.8z"/>
+    <clipPath id="recorte-sello"><circle cx="32" cy="32" r="31"/></clipPath>
+    <symbol id="caja-regalo" viewBox="0 0 64 64">
+      <path fill-rule="evenodd" d="M32 26c-2.4-8-12.6-9.4-12.6-4.2 0 3.4 4.8 4.2 12.6 4.2Z M28.4 23.4c-1.6-3.4-5.8-4.4-5.8-2 0 1.4 2 2 5.8 2Z M32 26c2.4-8 12.6-9.4 12.6-4.2 0 3.4-4.8 4.2-12.6 4.2Z M35.6 23.4c1.6-3.4 5.8-4.4 5.8-2 0 1.4-2 2-5.8 2Z"/>
+      <path d="M17 27.5h12.4v6.2H17z M34.6 27.5H47v6.2H34.6z M19.6 36h9.8v12h-9.8z M34.6 36h9.8v12h-9.8z"/>
     </symbol>
     <symbol id="regalo" viewBox="0 0 24 24">
       <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M3.5 9.5h17v4h-17z M5 13.5h14V21H5z M12 9.5V21 M12 9.5c-1.6-3.6-6.2-4.4-6.2-1.6 0 1.2 1.3 1.6 6.2 1.6Zm0 0c1.6-3.6 6.2-4.4 6.2-1.6 0 1.2-1.3 1.6-6.2 1.6Z"/>
@@ -343,10 +375,10 @@ dialog.dlg[open] { display: flex; flex-direction: column; gap: 14px; animation: 
 </svg>
 
 <div class="app">
-  <header class="marca">
-    <span class="marca-insignia" aria-hidden="true"><svg><use href="#cerdo"/></svg></span>
-    <span class="marca-txt"><span class="marca-sup">Carnitas Michoacanas</span><span class="marca-nombre">El Saurín</span></span>
-    <span class="marca-desde">Desde 1986<br>Tuxtepec</span>
+  <header class="marca" id="barra-marca" hidden>
+    <img class="marca-insignia" src="logo/icono-180.png" alt="" width="46" height="46">
+    <span class="marca-txt"><span class="marca-sup">Carnitas</span><span class="marca-nombre">El Saurín</span></span>
+    <span class="marca-desde">Tuxtepec, Oaxaca<br>Desde 1986</span>
   </header>
 
   <p class="aviso-prueba" id="aviso-prueba" hidden><b>Vista de prueba.</b> Así la verán tus clientes cuando quede publicada. Para probar la caja entra en «Acceso para el personal», al final de la página.</p>
@@ -356,12 +388,22 @@ dialog.dlg[open] { display: flex; flex-direction: column; gap: 14px; animation: 
   <main class="vista" id="vista-cliente">
     <section class="cuerda" aria-labelledby="t-tarjeta">
       <div class="carton" id="carton">
+        <h1 class="sr" id="t-tarjeta">Tarjeta de cliente frecuente de Carnitas El Saurín</h1>
+        <div class="logo" id="logo" role="img" aria-label="Logo de Carnitas El Saurín, Tuxtepec, Oaxaca. Desde 1986">
+          <img class="c-cuerda" src="logo/cuerda.webp" alt="" width="921" height="1070">
+          <img class="c-arco" src="logo/arco.webp" alt="" width="921" height="1070">
+          <img class="c-titulo" src="logo/titulo.webp" alt="" width="921" height="1070">
+          <img class="c-linea" src="logo/linea.webp" alt="" width="921" height="1070">
+          <img class="c-lugar" src="logo/lugar.webp" alt="" width="921" height="1070">
+          <img class="c-detalles" src="logo/detalles.webp" alt="" width="921" height="1070">
+          <img class="c-cerdo" src="logo/cerdo.webp" alt="" width="921" height="1070">
+          <img class="c-liston" src="logo/liston.webp" alt="" width="921" height="1070">
+        </div>
+        <script>(function () { var l = document.getElementById("logo"); if (l && !(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) l.classList.add("espera"); })();</script>
         <div class="carton-cab">
           <p class="carton-eyebrow">Tarjeta de cliente frecuente</p>
           <span class="carton-folio">No. <b id="folio">----</b></span>
         </div>
-        <h1 class="carton-nombre" id="t-tarjeta">El Saurín</h1>
-        <div class="liston"><span>Desde 1986 · Tuxtepec, Oax.</span></div>
         <ol class="sellos" id="sellos" aria-label="Sellos de tu tarjeta"></ol>
         <div class="carton-pie">
           <p class="cuenta" aria-live="polite"><b id="cuenta">2</b><span id="cuenta-de">de 7 sellos</span></p>
@@ -392,16 +434,18 @@ dialog.dlg[open] { display: flex; flex-direction: column; gap: 14px; animation: 
       <details class="entregados" id="entregados" hidden><summary id="entregados-txt">Premios entregados</summary><ul id="entregados-lista"></ul></details>
     </section>
 
+    <div class="cinta" aria-hidden="true"><div class="cinta-pista" id="cinta-pista"><span>Desde 1986</span><span>Carnitas</span><span>Engañadas</span><span>Tuxtepec, Oaxaca</span><span>Junta sellos</span><span>Gana carnitas</span></div></div>
+
     <section class="seccion" aria-labelledby="t-como">
-      <h2 class="seccion-titulo" id="t-como">Cómo funciona</h2>
+      <h2 class="seccion-titulo revelar" id="t-como">Cómo funciona</h2>
       <ol class="pasos">
-        <li><div><b>Compra tu carne</b><span>Por cada <span class="monto-sello">$200</span> en carne, en caja te dan un código QR.</span></div></li>
-        <li><div><b>Escanéalo y raspa</b><span>Ábrelo con la cámara de tu celular, raspa y tus sellos se guardan aquí.</span></div></li>
-        <li><div><b>Completa los <span class="meta-n">7</span> sellos</b><span><span class="txt-regalo">Tu tarjeta ya trae <span class="regalo-n">2</span> de regalo. </span>Al completarla te regalamos <span class="premio-nombre">$150 de carne + 5 engañadas</span>. Lo canjeas cuando quieras.</span></div></li>
+        <li class="revelar"><div><b>Compra tu carne</b><span>Por cada <span class="monto-sello">$200</span> en carne, en caja te dan un código QR.</span></div></li>
+        <li class="revelar" style="--rd:90ms"><div><b>Escanéalo y raspa</b><span>Ábrelo con la cámara de tu celular, raspa y tus sellos se guardan aquí.</span></div></li>
+        <li class="revelar" style="--rd:180ms"><div><b>Completa los <span class="meta-n">7</span> sellos</b><span><span class="txt-regalo">Tu tarjeta ya trae <span class="regalo-n">2</span> de regalo. </span>Al completarla te regalamos <span class="premio-nombre">$150 de carne + 5 engañadas</span>. Lo canjeas cuando quieras.</span></div></li>
       </ol>
     </section>
 
-    <section class="visita" aria-labelledby="t-visita">
+    <section class="visita revelar" aria-labelledby="t-visita">
       <h2 class="seccion-titulo" id="t-visita">¿Cómo te atendimos?</h2>
       <p class="seccion-sub" style="margin-top:-8px">Cuéntanos en Google. Nos ayuda a mejorar y a que más gente nos encuentre.</p>
       <div class="botones">
@@ -414,7 +458,7 @@ dialog.dlg[open] { display: flex; flex-direction: column; gap: 14px; animation: 
       </div>
     </section>
 
-    <footer class="letra-chica">
+    <footer class="letra-chica revelar">
       <h2>Reglas de la promoción</h2>
       <p id="reglas-texto"></p>
       <p>Tu tarjeta se guarda en este celular y en este navegador. Si cambias de celular o borras los datos del navegador, se pierde; respáldala por WhatsApp para recuperarla.</p>
@@ -794,8 +838,9 @@ function qrSVG(text, dark, light) {
   var ROT = [-8, 5, -3, 9, -6, 4, -10, 7, -2, 6];
   var te = new TextEncoder();
   var EN_CLAUDE = !!(window.claude && typeof window.claude.use === "function") || /claude/i.test(location.hostname);
-  var SELLO = '<svg viewBox="0 0 64 64" aria-hidden="true"><g filter="url(#tinta)"><use href="#cerdo"/></g></svg>';
-  var SELLO_REGALO = '<svg viewBox="0 0 64 64" aria-hidden="true"><g filter="url(#tinta)"><use href="#sello-regalo"/></g></svg>';
+  // Sello de compra: disco con el cerdito del logo. Sello de regalo: disco ocre con una caja de regalo.
+  var SELLO = '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="currentColor"/><circle cx="32" cy="32" r="27" fill="none" stroke="#e7dcc0" stroke-width="1" opacity="0.9"/><image href="logo/cabeza.webp" x="1" y="18.5" width="62" height="36.6" clip-path="url(#recorte-sello)"/></svg>';
+  var SELLO_REGALO = '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="currentColor"/><circle cx="32" cy="32" r="27" fill="none" stroke="#f4ecd8" stroke-width="1" opacity="0.9"/><use href="#caja-regalo" fill="#f4ecd8"/></svg>';
   var CELDA_PREMIO = '<span class="meta-in"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#regalo"/></svg><span class="meta-txt">Premio</span></span>';
   var POR_COMPRAR = CONFIG.casillas - CONFIG.regalo; // sellos de compra que completan una tarjeta
   var REGLAS = 2; // versión de las reglas (1 = tarjeta de 10 sellos sin regalo)
@@ -989,11 +1034,11 @@ function qrSVG(text, dark, light) {
     ctx = lienzo.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.globalCompositeOperation = "source-over";
     var g = ctx.createLinearGradient(0, 0, w, h);
-    g.addColorStop(0, "#7a1626"); g.addColorStop(0.5, "#a12a3c"); g.addColorStop(1, "#66121f");
+    g.addColorStop(0, "#6c2c21"); g.addColorStop(0.5, "#8f4334"); g.addColorStop(1, "#56221a");
     ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
-    ctx.strokeStyle = "rgba(230,196,122,0.22)"; ctx.lineWidth = 1;
+    ctx.strokeStyle = "rgba(213,177,131,0.24)"; ctx.lineWidth = 1;
     for (var x = -h; x < w; x += 9) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + h, h); ctx.stroke(); }
-    ctx.strokeStyle = "rgba(230,196,122,0.7)"; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+    ctx.strokeStyle = "rgba(213,177,131,0.75)"; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
     ctx.strokeRect(9, 9, w - 18, h - 18); ctx.setLineDash([]);
     ctx.fillStyle = "#f4e7cf"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
     ctx.font = '28px "Alfa Slab One", Rockwell, Georgia, serif'; ctx.fillText("RASPA AQUÍ", w / 2, h / 2 - 8);
@@ -1283,6 +1328,7 @@ function qrSVG(text, dark, light) {
   var vistaActual = "cliente";
   function irA(v) {
     vistaActual = v;
+    $("#barra-marca").hidden = v === "cliente"; // en la tarjeta ya está el logo completo
     $("#vista-cliente").hidden = v !== "cliente";
     $("#vista-caja").hidden = v !== "caja";
     $("#vista-canje").hidden = v !== "canje";
@@ -1411,11 +1457,54 @@ function qrSVG(text, dark, light) {
     window.addEventListener("hashchange", procesarHash);
   }
 
+  // =================== Movimiento ===================
+  var sinMovimiento = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+  // El logo entra por partes cuando ya cargaron todas sus capas; después el cerdito saluda solo y al tocarlo
+  function animarLogo() {
+    var logo = $("#logo"); if (!logo) return;
+    logo.addEventListener("click", function () {
+      if (sinMovimiento || !logo.classList.contains("listo") || logo.classList.contains("toque")) return;
+      logo.classList.add("toque");
+      setTimeout(function () { logo.classList.remove("toque"); }, 650);
+    });
+    if (!logo.classList.contains("espera")) return;
+    var hecho = false;
+    function iniciar() {
+      if (hecho) return; hecho = true;
+      if (window.CSS && CSS.registerProperty) logo.classList.add("con-giro");
+      logo.classList.remove("espera"); logo.classList.add("anima");
+      setTimeout(function () { logo.classList.remove("anima"); logo.classList.remove("con-giro"); logo.classList.add("listo"); }, 2750);
+    }
+    Promise.all($$("#logo img").map(function (im) {
+      if (im.decode) return im.decode().catch(function () {});
+      return new Promise(function (ok) { if (im.complete) ok(); else { im.onload = im.onerror = ok; } });
+    })).then(iniciar);
+    setTimeout(iniciar, 3000);
+  }
+  function prepararMovimiento() {
+    var pista = $("#cinta-pista"); if (pista) pista.innerHTML += pista.innerHTML; // dos copias para que la cinta no tenga corte
+    animarLogo();
+    if (sinMovimiento || !("IntersectionObserver" in window)) return;
+    // Solo se esconde lo que queda fuera de la pantalla al abrir; aparece cuando el cliente desliza hasta ahí
+    var alto = window.innerHeight || 800, pendientes = [];
+    $$(".revelar").forEach(function (el) { if (el.getBoundingClientRect().top < alto * 0.92) el.classList.add("visto"); else pendientes.push(el); });
+    if (!pendientes.length) return;
+    document.documentElement.classList.add("anim");
+    function mostrar(el) { el.classList.add("visto"); io.unobserve(el); }
+    var io = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) { if (e.isIntersecting) mostrar(e.target); });
+      // Lo que quedó arriba de la pantalla por un salto (no pasó frente al cliente) se muestra sin esperar
+      pendientes.forEach(function (el) { if (!el.classList.contains("visto") && el.getBoundingClientRect().top < 0) mostrar(el); });
+    }, { rootMargin: "0px 0px -6% 0px", threshold: 0.05 });
+    pendientes.forEach(function (el) { io.observe(el); });
+  }
+
   // =================== Inicio ===================
   pintarTextosFijos();
   conectar();
   pintarCliente();
   actualizarCalculo();
+  prepararMovimiento();
   cargarClave().then(function () {
     var arrancado = false;
     function arrancar() { if (arrancado) return; arrancado = true; procesarHash(); bienvenida(); }
