@@ -27,17 +27,17 @@
   --tinta: #47290f;
   --tinta-2: #6e563b;
   --guinda: #7f392c;
-  --guinda-2: #a05240;
+  --guinda-2: #934433;
   --guinda-osc: #5b241a;
-  --oro: #b0834f;
-  --oro-claro: #d5b183;
-  --oro-osc: #80582f;
+  --oro: #c39a45;
+  --oro-claro: #ecd08a;
+  --oro-osc: #8f6c2a;
   --texto: #efe4c9;
   --texto-2: #c8b592;
   --ok: #2f6f45;
   --ok-fondo: #dde8d0;
   --mal: #9c2b17;
-  --mal-fondo: #f2dbc6;
+  --mal-fondo: #efe0c2;
   --f-display: "Alfa Slab One", Rockwell, "Roboto Slab", Georgia, serif;
   --f-texto: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
   --f-mono: "Courier Prime", "Courier New", Courier, monospace;
@@ -47,7 +47,8 @@
 html, body { min-height: 100%; }
 body {
   background-color: var(--fondo);
-  background-image: radial-gradient(120% 55% at 50% -12%, rgba(176, 131, 79, 0.24), transparent 62%);
+  background-image: radial-gradient(115% 44% at 50% -6%, rgba(150, 56, 38, 0.5), transparent 68%), radial-gradient(80% 34% at 50% 20%, rgba(195, 154, 69, 0.2), transparent 72%);
+  background-repeat: no-repeat;
   color: var(--texto);
   font: 400 16px/1.5 var(--f-texto);
   padding-left: max(16px, env(safe-area-inset-left, 0px));
@@ -76,25 +77,37 @@ button { font: inherit; color: inherit; }
 .aviso-prueba b { color: var(--oro-claro); font-weight: 600; }
 .aviso-guardado { background: var(--mal-fondo); color: var(--mal); border-radius: 14px; padding: 12px 14px; font-size: 14px; font-weight: 500; }
 
-/* ---------- Tarjeta de cartulina ---------- */
+/* ---------- Tarjeta de cartulina con marco dorado (un destello lo recorre cada tanto) ---------- */
 .cuerda {
-  padding: 7px;
+  position: relative; overflow: hidden;
+  padding: 5px;
   border-radius: 26px;
-  background: repeating-linear-gradient(-52deg, var(--oro-osc) 0 3px, var(--oro) 3px 8px, var(--oro-claro) 8px 10px, var(--oro) 10px 13px);
-  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.45), inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(135deg, #8f6c2a 0%, #ecd08a 16%, #b88f3c 32%, #f8eab4 50%, #b88f3c 68%, #ecd08a 84%, #8f6c2a 100%);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4), 0 26px 60px rgba(0, 0, 0, 0.55), 0 0 80px rgba(195, 154, 69, 0.24);
 }
+.cuerda::after { content: ""; position: absolute; inset: -60% -20%; background: linear-gradient(105deg, transparent 46%, rgba(255, 255, 255, 0.9) 50%, transparent 54%); transform: translateX(-70%); animation: destello 7s ease-in-out 3.2s infinite; pointer-events: none; }
+@keyframes destello { 0%, 62% { transform: translateX(-70%); } 100% { transform: translateX(70%); } }
 .carton {
-  position: relative;
-  border-radius: 20px;
+  position: relative; z-index: 1; overflow: hidden;
+  border-radius: 21px;
   background-color: var(--crema);
   background-image: radial-gradient(circle at 16% 8%, rgba(255, 255, 255, 0.34), transparent 42%), radial-gradient(rgba(71, 41, 15, 0.06) 0.8px, transparent 1.1px);
   background-size: auto, 5px 5px;
   color: var(--tinta);
   padding: 20px 18px 18px;
-  box-shadow: inset 0 0 0 5px var(--crema), inset 0 0 0 6.5px rgba(93, 58, 28, 0.4);
+  box-shadow: inset 0 0 0 5px var(--crema), inset 0 0 0 6.2px rgba(71, 41, 15, 0.5);
   display: flex; flex-direction: column; gap: 14px;
   color-scheme: light;
 }
+.carton > :not(.sr) { position: relative; z-index: 1; }
+/* Rayos de cartel antiguo detrás del logo, girando muy despacio */
+.carton > .logo-zona { z-index: 0; display: grid; place-items: center; }
+.rayos { position: absolute; left: 50%; top: 50%; width: 660px; height: 660px; margin: -330px 0 0 -330px; border-radius: 50%; background: repeating-conic-gradient(from 0deg, rgba(143, 108, 42, 0.17) 0deg 5deg, transparent 5deg 10deg); -webkit-mask-image: radial-gradient(circle, #000 14%, transparent 64%); mask-image: radial-gradient(circle, #000 14%, transparent 64%); animation: girar 90s linear infinite; pointer-events: none; }
+@keyframes girar { to { transform: rotate(360deg); } }
+.oferta { font: clamp(25px, 7.4vw, 31px)/1.06 var(--f-display); color: var(--tinta); text-align: center; text-wrap: balance; }
+.oferta b { font-weight: 400; color: var(--guinda); }
+.oferta-regalo { align-self: center; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; line-height: 1.2; color: #3d2607; background: linear-gradient(180deg, #f3dc98, #c9a24a); border-radius: 999px; padding: 8px 16px 8px 12px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 2px 0 #8f6c2a, 0 6px 14px rgba(71, 41, 15, 0.22); margin-bottom: 2px; }
+.oferta-regalo svg { width: 20px; height: 20px; flex: none; }
 .carton.golpe { animation: golpe 0.35s ease; }
 .carton-cab { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
 .carton-eyebrow { font: 700 11px/1.2 var(--f-texto); letter-spacing: 0.16em; text-transform: uppercase; color: var(--tinta-2); }
@@ -104,7 +117,7 @@ button { font: inherit; color: inherit; }
 
 /* ---------- Logo animado (cada parte del logo es una capa del mismo tamaño) ---------- */
 @property --giro { syntax: "<angle>"; inherits: false; initial-value: 360deg; }
-.logo { position: relative; width: min(80%, 290px); aspect-ratio: 921 / 1070; margin: 0 auto; cursor: pointer; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.logo { position: relative; z-index: 1; width: min(70%, 240px); aspect-ratio: 921 / 1070; margin: 0 auto; cursor: pointer; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 .logo img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
 .logo.espera img { opacity: 0; }
 .logo.anima .c-arco { animation: lg-caer 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.2) both; }
@@ -138,14 +151,13 @@ button { font: inherit; color: inherit; }
 .sellos { list-style: none; margin: 4px auto 0; padding: 0; display: grid; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); gap: 10px; width: 100%; max-width: 372px; }
 .sello { aspect-ratio: 1; max-width: 100%; border-radius: 50%; display: grid; place-items: center; position: relative; border: 2px dashed rgba(59, 36, 22, 0.32); }
 .sello .num { font: 700 17px/1 var(--f-mono); color: rgba(59, 36, 22, 0.4); }
-.sello.meta { border-style: solid; border-color: rgba(127, 57, 44, 0.65); background: rgba(93, 58, 28, 0.07); }
-.sello .meta-in { display: flex; flex-direction: column; align-items: center; gap: 3px; }
-.sello .meta-in svg { width: 24px; height: 24px; color: var(--guinda); transform: none; opacity: 1; }
-.sello .meta-txt { font: 700 9px/1.1 var(--f-texto); letter-spacing: 0.08em; text-transform: uppercase; color: var(--guinda); text-align: center; }
-.sello.lleno { border-color: transparent; }
-.sello svg { width: 108%; height: 108%; color: var(--guinda); transform: rotate(var(--r, 0deg)); filter: drop-shadow(0 1.5px 1px rgba(59, 36, 22, 0.28)); }
-.sello.regalo svg { color: var(--oro); }
+.sello.lleno, .sello.meta { border-color: transparent; }
+.sello svg { width: 108%; height: 108%; transform: rotate(var(--r, 0deg)); filter: drop-shadow(0 2px 1.5px rgba(59, 36, 22, 0.32)); }
 .sello.nuevo svg { animation: estampar 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.25) both; animation-delay: var(--d, 0ms); }
+/* La medalla del premio: apagada mientras falta, encendida al completar la tarjeta */
+.sello.meta svg { transform: none; opacity: 0.6; filter: saturate(0.8) drop-shadow(0 2px 1.5px rgba(59, 36, 22, 0.22)); animation: latir 2.6s ease-in-out infinite; }
+.sello.meta.listo svg { opacity: 1; filter: drop-shadow(0 0 7px rgba(236, 208, 138, 0.95)); }
+@keyframes latir { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
 
 .carton-pie { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-top: 1.5px dashed rgba(59, 36, 22, 0.25); padding-top: 12px; }
 .cuenta { display: flex; align-items: baseline; gap: 4px; }
@@ -166,7 +178,8 @@ button { font: inherit; color: inherit; }
 
 /* ---------- Secciones ---------- */
 .seccion { display: flex; flex-direction: column; gap: 14px; }
-.seccion-titulo { font: 22px/1.15 var(--f-display); color: var(--crema); }
+.seccion-titulo { font: 22px/1.15 var(--f-display); color: var(--crema); display: flex; align-items: center; gap: 14px; }
+.seccion-titulo::after { content: ""; flex: 1; min-width: 24px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--oro), rgba(195, 154, 69, 0)); }
 .seccion-sub { color: var(--texto-2); font-size: 15px; margin-top: -6px; }
 
 .boletos { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
@@ -187,7 +200,7 @@ button { font: inherit; color: inherit; }
 
 .pasos { list-style: none; counter-reset: paso; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
 .pasos li { counter-increment: paso; display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px; align-items: start; }
-.pasos li::before { content: counter(paso); width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font: 18px/1 var(--f-display); color: var(--crema); background: var(--guinda); box-shadow: inset 0 0 0 2px var(--guinda), inset 0 0 0 3.5px var(--crema); }
+.pasos li::before { content: counter(paso); width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font: 18px/1 var(--f-display); color: var(--crema); background: var(--guinda); box-shadow: inset 0 0 0 2px var(--guinda), inset 0 0 0 3.5px var(--oro-claro); }
 .pasos b { color: var(--crema); font-weight: 600; display: block; }
 .pasos span { color: var(--texto-2); font-size: 15px; }
 
@@ -211,7 +224,7 @@ button { font: inherit; color: inherit; }
 .btn:active { transform: translateY(1px); }
 .btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .btn svg { width: 20px; height: 20px; flex: none; }
-.btn-primario { background: var(--guinda); color: var(--crema); box-shadow: 0 3px 0 var(--guinda-osc); }
+.btn-primario { background: linear-gradient(180deg, var(--guinda-2), var(--guinda)); color: var(--crema); box-shadow: 0 3px 0 var(--guinda-osc); }
 .btn-primario:hover:not(:disabled) { filter: brightness(1.08); }
 .btn-claro { background: var(--crema); color: var(--tinta); box-shadow: 0 3px 0 var(--crema-2); }
 .btn-borde { background: transparent; color: var(--crema); box-shadow: inset 0 0 0 1.5px rgba(244, 231, 207, 0.4); }
@@ -332,7 +345,7 @@ dialog.dlg[open] { display: flex; flex-direction: column; gap: 14px; animation: 
 .cinta { overflow: hidden; border-block: 1px solid var(--linea); padding-block: 11px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); }
 .cinta-pista { display: flex; width: max-content; animation: cinta 30s linear infinite; }
 .cinta-pista span { display: inline-flex; align-items: center; white-space: nowrap; font: 14px/1 var(--f-display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--oro-claro); }
-.cinta-pista span::after { content: ""; width: 7px; height: 7px; margin-inline: 18px; background: var(--guinda-2); transform: rotate(45deg); }
+.cinta-pista span::after { content: ""; width: 7px; height: 7px; margin-inline: 18px; background: var(--oro); transform: rotate(45deg); }
 .anim .revelar { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); transition-delay: var(--rd, 0ms); }
 .anim .revelar.visto { opacity: 1; transform: none; }
 @keyframes estampar-grande { 0% { transform: rotate(-30deg) scale(2.2); opacity: 0; } 100% { transform: rotate(-8deg) scale(1); opacity: 1; } }
@@ -340,7 +353,7 @@ dialog.dlg[open] { display: flex; flex-direction: column; gap: 14px; animation: 
 @keyframes subir { from { transform: translateY(14px); opacity: 0; } to { transform: none; opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-delay: 0ms !important; transition-duration: 0.001ms !important; }
-  .logo img, .cinta-pista { animation: none !important; }
+  .logo img, .cinta-pista, .cuerda::after, .rayos, .sello.meta svg { animation: none !important; }
 }
 @media (min-width: 700px) { .app { padding-top: 32px; } }
 </style>
@@ -357,7 +370,9 @@ dialog.dlg[open] { display: flex; flex-direction: column; gap: 14px; animation: 
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <clipPath id="recorte-sello"><circle cx="32" cy="32" r="31"/></clipPath>
+    <clipPath id="recorte-sello"><circle cx="32" cy="32" r="28.4"/></clipPath>
+    <radialGradient id="g-oro" cx="34%" cy="28%" r="78%"><stop offset="0" stop-color="#fbf0bf"/><stop offset="0.38" stop-color="#e3c36c"/><stop offset="0.78" stop-color="#b88f3c"/><stop offset="1" stop-color="#8f6c2a"/></radialGradient>
+    <radialGradient id="g-rojo" cx="36%" cy="28%" r="80%"><stop offset="0" stop-color="#a04a38"/><stop offset="0.55" stop-color="#7f392c"/><stop offset="1" stop-color="#57231a"/></radialGradient>
     <symbol id="caja-regalo" viewBox="0 0 64 64">
       <path fill-rule="evenodd" d="M32 26c-2.4-8-12.6-9.4-12.6-4.2 0 3.4 4.8 4.2 12.6 4.2Z M28.4 23.4c-1.6-3.4-5.8-4.4-5.8-2 0 1.4 2 2 5.8 2Z M32 26c2.4-8 12.6-9.4 12.6-4.2 0 3.4-4.8 4.2-12.6 4.2Z M35.6 23.4c1.6-3.4 5.8-4.4 5.8-2 0 1.4-2 2-5.8 2Z"/>
       <path d="M17 27.5h12.4v6.2H17z M34.6 27.5H47v6.2H34.6z M19.6 36h9.8v12h-9.8z M34.6 36h9.8v12h-9.8z"/>
@@ -389,6 +404,8 @@ dialog.dlg[open] { display: flex; flex-direction: column; gap: 14px; animation: 
     <section class="cuerda" aria-labelledby="t-tarjeta">
       <div class="carton" id="carton">
         <h1 class="sr" id="t-tarjeta">Tarjeta de cliente frecuente de Carnitas El Saurín</h1>
+        <div class="logo-zona">
+        <div class="rayos" aria-hidden="true"></div>
         <div class="logo" id="logo" role="img" aria-label="Logo de Carnitas El Saurín, Tuxtepec, Oaxaca. Desde 1986">
           <img class="c-cuerda" src="logo/cuerda.webp" alt="" width="921" height="1070">
           <img class="c-arco" src="logo/arco.webp" alt="" width="921" height="1070">
@@ -399,7 +416,10 @@ dialog.dlg[open] { display: flex; flex-direction: column; gap: 14px; animation: 
           <img class="c-cerdo" src="logo/cerdo.webp" alt="" width="921" height="1070">
           <img class="c-liston" src="logo/liston.webp" alt="" width="921" height="1070">
         </div>
+        </div>
         <script>(function () { var l = document.getElementById("logo"); if (l && !(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) l.classList.add("espera"); })();</script>
+        <p class="oferta">Junta <span class="meta-n">7</span> sellos y llévate <b>carnitas gratis</b></p>
+        <p class="oferta-regalo txt-regalo"><svg aria-hidden="true"><use href="#regalo"/></svg><span>Tu tarjeta ya trae <span class="regalo-n">2</span> sellos de regalo</span></p>
         <div class="carton-cab">
           <p class="carton-eyebrow">Tarjeta de cliente frecuente</p>
           <span class="carton-folio">No. <b id="folio">----</b></span>
@@ -409,7 +429,7 @@ dialog.dlg[open] { display: flex; flex-direction: column; gap: 14px; animation: 
           <p class="cuenta" aria-live="polite"><b id="cuenta">2</b><span id="cuenta-de">de 7 sellos</span></p>
           <p class="faltan" id="faltan">Te faltan $1,000 en carne para tu premio</p>
         </div>
-        <p class="premio-linea"><svg aria-hidden="true"><use href="#regalo"/></svg><span><span class="txt-regalo">Empiezas con <b><span class="regalo-n">2</span> sellos de regalo</b>. </span>Al completar los <span class="meta-n">7</span> te regalamos <b class="premio-nombre">$150 de carne + 5 engañadas</b></span></p>
+        <p class="premio-linea"><svg aria-hidden="true"><use href="#regalo"/></svg><span>Al completar los <span class="meta-n">7</span> sellos te regalamos <b class="premio-nombre">$150 de carne + 5 engañadas</b></span></p>
       </div>
     </section>
 
@@ -838,10 +858,12 @@ function qrSVG(text, dark, light) {
   var ROT = [-8, 5, -3, 9, -6, 4, -10, 7, -2, 6];
   var te = new TextEncoder();
   var EN_CLAUDE = !!(window.claude && typeof window.claude.use === "function") || /claude/i.test(location.hostname);
-  // Sello de compra: disco con el cerdito del logo. Sello de regalo: disco ocre con una caja de regalo.
-  var SELLO = '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="currentColor"/><circle cx="32" cy="32" r="27" fill="none" stroke="#e7dcc0" stroke-width="1" opacity="0.9"/><image href="logo/cabeza.webp" x="1" y="18.5" width="62" height="36.6" clip-path="url(#recorte-sello)"/></svg>';
-  var SELLO_REGALO = '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="currentColor"/><circle cx="32" cy="32" r="27" fill="none" stroke="#f4ecd8" stroke-width="1" opacity="0.9"/><use href="#caja-regalo" fill="#f4ecd8"/></svg>';
-  var CELDA_PREMIO = '<span class="meta-in"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#regalo"/></svg><span class="meta-txt">Premio</span></span>';
+  // Sello de compra: el cerdito del logo en un disco rojo con aro dorado. Sello de regalo y medalla del premio: monedas doradas.
+  var ARO = '<circle cx="32" cy="32" r="31" fill="url(#g-oro)"/>';
+  var PUNTEADO = '<circle cx="32" cy="32" r="26.4" fill="none" stroke="#7a5a1e" stroke-width="1" stroke-dasharray="1.6 2.3" opacity="0.75"/>';
+  var SELLO = '<svg viewBox="0 0 64 64" aria-hidden="true">' + ARO + '<circle cx="32" cy="32" r="28.4" fill="url(#g-rojo)"/><image href="logo/cabeza.webp" x="2.6" y="19.6" width="58.8" height="34.7" clip-path="url(#recorte-sello)"/></svg>';
+  var SELLO_REGALO = '<svg viewBox="0 0 64 64" aria-hidden="true">' + ARO + PUNTEADO + '<use href="#caja-regalo" fill="#4a2d0c"/></svg>';
+  var CELDA_PREMIO = '<svg viewBox="0 0 64 64" aria-hidden="true">' + ARO + PUNTEADO + '<g transform="translate(15.4 8.4) scale(0.52)"><use href="#caja-regalo" fill="#4a2d0c"/></g><text x="32" y="48.8" text-anchor="middle" font-family="Libre Franklin, Arial, sans-serif" font-weight="800" font-size="8" letter-spacing="0.5" fill="#4a2d0c">PREMIO</text></svg>';
   var POR_COMPRAR = CONFIG.casillas - CONFIG.regalo; // sellos de compra que completan una tarjeta
   var REGLAS = 2; // versión de las reglas (1 = tarjeta de 10 sellos sin regalo)
 
@@ -950,7 +972,7 @@ function qrSVG(text, dark, light) {
       ol.appendChild(li);
     }
     if (celdaPremio) {
-      var fin = document.createElement("li"); fin.className = "sello meta"; fin.innerHTML = CELDA_PREMIO;
+      var fin = document.createElement("li"); fin.className = "sello meta" + (comprados >= POR_COMPRAR ? " listo" : ""); fin.innerHTML = CELDA_PREMIO;
       fin.setAttribute("aria-label", "Premio al completar la tarjeta"); ol.appendChild(fin);
     }
     $("#cuenta").textContent = llenos;
